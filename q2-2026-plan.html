@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Q2 2026 クォーター計画 — Colibri CS</title>
+  <title>Q1 2026 クォーター振り返り — Colibri CS</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap');
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -16,964 +15,642 @@
       --text-dim: #475569;
       --text-muted: #94a3b8;
       --colibri: #e85d5d;
-      --colibri-light: rgba(232,93,93,0.08);
+      --colibri-light: rgba(232,93,93,0.07);
       --green: #16a34a;
-      --green-light: rgba(22,163,74,0.08);
+      --green-light: rgba(22,163,74,0.07);
       --yellow: #d97706;
-      --yellow-light: rgba(217,119,6,0.08);
+      --yellow-light: rgba(217,119,6,0.07);
       --red: #dc2626;
-      --red-light: rgba(220,38,38,0.08);
+      --red-light: rgba(220,38,38,0.07);
       --blue: #2563eb;
-      --blue-light: rgba(37,99,235,0.08);
+      --blue-light: rgba(37,99,235,0.07);
       --purple: #7c3aed;
-      --purple-light: rgba(124,58,237,0.08);
+      --purple-light: rgba(124,58,237,0.07);
       --cyan: #0891b2;
-      --cyan-light: rgba(8,145,178,0.08);
+      --cyan-light: rgba(8,145,178,0.07);
       --border: rgba(0,0,0,0.06);
-      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
-      --shadow-lg: 0 10px 25px rgba(0,0,0,0.08), 0 4px 10px rgba(0,0,0,0.04);
+      --shadow: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
     }
 
     html { font-size: 15px; scroll-behavior: smooth; }
-
     body {
       font-family: 'Noto Sans JP', -apple-system, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.8;
     }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
 
     /* ===== Hero ===== */
     .hero {
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
       color: white;
-      padding: 60px 24px 48px;
+      padding: 56px 24px 44px;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
     .hero::before {
       content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at 30% 70%, rgba(232,93,93,0.15) 0%, transparent 50%),
-                  radial-gradient(circle at 70% 30%, rgba(37,99,235,0.1) 0%, transparent 50%);
-      animation: float 20s ease-in-out infinite;
+      position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 70%, rgba(232,93,93,0.12) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 30%, rgba(37,99,235,0.08) 0%, transparent 50%);
     }
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0); }
-      50% { transform: translate(-2%, 2%); }
-    }
-    .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+    .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
     .hero-badge {
       display: inline-block;
-      background: rgba(232,93,93,0.2);
-      border: 1px solid rgba(232,93,93,0.4);
-      color: #f87171;
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 4px 16px;
-      border-radius: 20px;
-      letter-spacing: 0.1em;
-      margin-bottom: 16px;
+      background: rgba(232,93,93,0.2); border: 1px solid rgba(232,93,93,0.4);
+      color: #f87171; font-size: 0.7rem; font-weight: 600;
+      padding: 4px 16px; border-radius: 20px; letter-spacing: 0.1em; margin-bottom: 14px;
     }
-    .hero h1 {
-      font-size: 2.2rem;
-      font-weight: 900;
-      margin-bottom: 8px;
-      letter-spacing: -0.02em;
-    }
-    .hero-sub {
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 24px;
-    }
-    .hero-meta {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-    .hero-meta-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.6);
-    }
-    .hero-meta-item .icon { font-size: 1rem; }
+    .hero h1 { font-size: 2rem; font-weight: 900; margin-bottom: 6px; letter-spacing: -0.02em; }
+    .hero-sub { font-size: 0.9rem; color: rgba(255,255,255,0.65); margin-bottom: 20px; }
+    .hero-meta { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 0.78rem; color: rgba(255,255,255,0.5); }
 
-    /* ===== Layout ===== */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
+    /* ===== TOC ===== */
+    .toc {
+      display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
+      margin-top: -20px; position: relative; z-index: 2;
     }
+    .toc a {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 10px 20px; font-size: 0.82rem; font-weight: 600;
+      color: var(--text-dim); text-decoration: none; box-shadow: var(--shadow-lg);
+      transition: all 0.2s;
+    }
+    .toc a:hover { transform: translateY(-1px); border-color: var(--colibri); color: var(--colibri); }
 
     /* ===== Section ===== */
-    .section {
-      margin-top: 40px;
-    }
+    .section { margin-top: 48px; }
     .section-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
+      padding-bottom: 12px; border-bottom: 2px solid var(--border);
     }
-    .section-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
+    .section-num {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 700; flex-shrink: 0;
     }
-    .section-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
-    .section-subtitle {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
+    .section-title { font-size: 1.2rem; font-weight: 700; }
+    .section-subtitle { font-size: 0.75rem; color: var(--text-muted); }
 
     /* ===== Cards ===== */
     .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-      transition: transform 0.2s, box-shadow 0.2s;
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 24px; box-shadow: var(--shadow); transition: transform 0.15s;
     }
-    .card:hover {
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-lg);
-    }
+    .card:hover { transform: translateY(-1px); }
 
     /* ===== Summary Stats ===== */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      margin-top: -24px;
-      position: relative;
-      z-index: 2;
+    .stats-row {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 24px;
     }
     .stat-card {
-      background: var(--card);
-      border-radius: 16px;
-      padding: 20px 24px;
-      box-shadow: var(--shadow-lg);
-      border-left: 4px solid;
+      background: var(--card); border-radius: 12px; padding: 16px 20px;
+      box-shadow: var(--shadow); text-align: center;
     }
-    .stat-label {
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 4px;
+    .stat-label { font-size: 0.68rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .stat-value { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 700; margin: 2px 0; }
+    .stat-note { font-size: 0.7rem; color: var(--text-muted); }
+
+    /* ===== KPI Card ===== */
+    .kpi-card { margin-bottom: 20px; overflow: hidden; }
+    .kpi-header {
+      display: flex; align-items: center; gap: 12px;
+      padding-bottom: 14px; border-bottom: 1px solid var(--border); margin-bottom: 14px;
     }
-    .stat-value {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.8rem;
-      font-weight: 700;
+    .kpi-icon { font-size: 1.4rem; }
+    .kpi-title { font-size: 1rem; font-weight: 700; flex: 1; }
+    .kpi-badge {
+      font-size: 0.7rem; font-weight: 600; padding: 3px 12px; border-radius: 10px;
     }
-    .stat-note {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 2px;
+    .badge-achieved { background: var(--green-light); color: var(--green); }
+    .badge-partial { background: var(--yellow-light); color: var(--yellow); }
+
+    .kpi-review {
+      font-size: 0.84rem; color: var(--text-dim); margin-bottom: 16px; line-height: 1.8;
     }
 
-    /* ===== Q1 Review Grid ===== */
-    .review-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 16px;
+    /* Branch lines */
+    .kpi-branches { margin-top: 16px; }
+    .kpi-branch {
+      display: flex; gap: 12px; margin-bottom: 12px;
+      padding: 12px 16px; border-radius: 10px; border-left: 3px solid;
     }
-    .review-card {
-      position: relative;
-      overflow: hidden;
+    .branch-connector {
+      flex-shrink: 0; width: 20px; display: flex; align-items: flex-start; padding-top: 2px;
+      font-size: 0.85rem; color: var(--text-muted);
     }
-    .review-card-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-    .review-card-icon {
-      font-size: 1.5rem;
-    }
-    .review-card-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-    }
-    .review-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 12px;
-    }
-    .status-achieved { background: var(--green-light); color: var(--green); }
-    .status-partial { background: var(--yellow-light); color: var(--yellow); }
-    .status-missed { background: var(--red-light); color: var(--red); }
-    .review-card-body {
-      font-size: 0.82rem;
-      color: var(--text-dim);
-      line-height: 1.7;
-    }
-    .review-card-body li {
-      margin-bottom: 4px;
-      list-style: none;
-      padding-left: 16px;
-      position: relative;
-    }
-    .review-card-body li::before {
-      content: '›';
-      position: absolute;
-      left: 0;
-      color: var(--text-muted);
-      font-weight: 700;
-    }
+    .branch-content { flex: 1; }
+    .branch-title { font-size: 0.82rem; font-weight: 600; margin-bottom: 2px; }
+    .branch-desc { font-size: 0.78rem; color: var(--text-dim); }
 
-    /* ===== Q2 Goals ===== */
-    .goals-container {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+    .kpi-actions {
+      margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--border);
     }
-    .goal-card {
-      display: grid;
-      grid-template-columns: 56px 1fr auto;
-      align-items: start;
-      gap: 16px;
+    .kpi-actions-title {
+      font-size: 0.72rem; font-weight: 600; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;
     }
-    .goal-number {
-      width: 56px;
-      height: 56px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.1rem;
-      font-weight: 700;
-      flex-shrink: 0;
+    .action-item {
+      font-size: 0.8rem; color: var(--text-dim);
+      padding: 3px 0 3px 20px; position: relative;
     }
-    .goal-content h3 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .goal-content p {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      line-height: 1.6;
-    }
-    .goal-tag {
-      display: inline-block;
-      font-size: 0.65rem;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 8px;
-      white-space: nowrap;
-      margin-top: 4px;
-    }
-    .tag-cs { background: var(--blue-light); color: var(--blue); }
-    .tag-dev { background: var(--purple-light); color: var(--purple); }
-    .tag-ai { background: var(--cyan-light); color: var(--cyan); }
-    .tag-all { background: var(--colibri-light); color: var(--colibri); }
+    .action-item::before { content: ''; position: absolute; left: 2px; top: 11px; width: 8px; height: 8px; border: 2px solid var(--text-muted); border-radius: 2px; }
 
-    /* ===== Strategy Section ===== */
-    .strategy-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 16px;
-    }
-    .strategy-card {
-      border-top: 3px solid;
-    }
-    .strategy-card h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .strategy-card p {
-      font-size: 0.82rem;
-      color: var(--text-dim);
-      margin-bottom: 12px;
-    }
-    .strategy-points {
-      list-style: none;
-    }
-    .strategy-points li {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      padding: 4px 0 4px 20px;
-      position: relative;
-    }
-    .strategy-points li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--text-muted);
-    }
+    /* ===== Progress bar ===== */
+    .progress { height: 5px; background: rgba(0,0,0,0.05); border-radius: 3px; margin-top: 10px; overflow: hidden; }
+    .progress-fill { height: 100%; border-radius: 3px; }
 
-    /* ===== Customer Status ===== */
-    .customer-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      font-size: 0.82rem;
-    }
+    /* ===== Customer Table ===== */
+    .customer-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.82rem; }
     .customer-table th {
-      background: #f8f9fa;
-      font-weight: 600;
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 10px 14px;
-      text-align: left;
+      background: #f8f9fa; font-weight: 600; font-size: 0.7rem; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 14px; text-align: left;
       border-bottom: 2px solid var(--border);
     }
-    .customer-table td {
-      padding: 10px 14px;
-      border-bottom: 1px solid var(--border);
-      color: var(--text-dim);
-    }
+    .customer-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dim); }
     .customer-table tr:last-child td { border-bottom: none; }
     .customer-table tr:hover td { background: #fafbfc; }
-    .c-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 0.75rem;
-      font-weight: 500;
-    }
-    .c-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      display: inline-block;
-    }
-    .c-dot.green { background: var(--green); }
-    .c-dot.yellow { background: var(--yellow); }
-    .c-dot.red { background: var(--red); }
+    .c-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; vertical-align: middle; }
+    .c-dot.g { background: var(--green); }
+    .c-dot.y { background: var(--yellow); }
+    .c-dot.r { background: var(--red); }
 
-    /* ===== Action Items ===== */
-    .action-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
+    /* ===== Onbo Flow ===== */
+    .onbo-flow {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; flex-wrap: wrap; margin: 20px 0;
     }
-    .action-category {
-      padding: 20px;
+    .onbo-step {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+      padding: 12px 18px; text-align: center; min-width: 140px;
     }
-    .action-category h4 {
-      font-size: 0.82rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .action-list {
-      list-style: none;
-    }
-    .action-list li {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      padding: 6px 0 6px 24px;
-      position: relative;
-      border-bottom: 1px solid rgba(0,0,0,0.04);
-    }
-    .action-list li:last-child { border-bottom: none; }
-    .action-list li::before {
-      content: '☐';
-      position: absolute;
-      left: 0;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
+    .onbo-step-num { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--text-muted); }
+    .onbo-step-name { font-size: 0.82rem; font-weight: 600; }
+    .onbo-step-detail { font-size: 0.72rem; color: var(--text-dim); }
+    .onbo-arrow { font-size: 1.2rem; color: var(--text-muted); padding: 0 6px; }
 
-    /* ===== Timeline ===== */
-    .timeline {
-      position: relative;
-      padding-left: 40px;
+    /* ===== Vision ===== */
+    .vision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .vision-card { border-top: 3px solid; }
+    .vision-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+    .vision-card p { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 10px; }
+    .vision-points { list-style: none; }
+    .vision-points li {
+      font-size: 0.78rem; color: var(--text-dim);
+      padding: 3px 0 3px 18px; position: relative;
     }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 15px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(180deg, var(--colibri), var(--blue), var(--purple));
-      border-radius: 1px;
-    }
-    .timeline-item {
-      position: relative;
-      margin-bottom: 24px;
-    }
-    .timeline-item:last-child { margin-bottom: 0; }
-    .timeline-dot {
-      position: absolute;
-      left: -33px;
-      top: 4px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      border: 3px solid var(--card);
-      box-shadow: 0 0 0 2px;
-    }
-    .timeline-month {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .timeline-content {
-      font-size: 0.82rem;
-      color: var(--text-dim);
-    }
-    .timeline-content ul {
-      list-style: none;
-      margin-top: 4px;
-    }
-    .timeline-content li {
-      padding: 2px 0 2px 16px;
-      position: relative;
-    }
-    .timeline-content li::before {
-      content: '•';
-      position: absolute;
-      left: 0;
-      color: var(--text-muted);
-    }
+    .vision-points li::before { content: '→'; position: absolute; left: 0; color: var(--text-muted); }
 
-    /* ===== Concept Box ===== */
+    /* ===== Concept ===== */
     .concept-box {
       background: linear-gradient(135deg, rgba(232,93,93,0.04), rgba(37,99,235,0.04));
-      border: 1px solid rgba(232,93,93,0.15);
-      border-radius: 16px;
-      padding: 28px;
+      border: 1px solid rgba(232,93,93,0.15); border-radius: 14px; padding: 28px;
     }
-    .concept-box h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: var(--colibri);
-    }
-    .concept-box p {
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      margin-bottom: 16px;
-    }
-    .concept-cols {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-    }
+    .concept-box h3 { font-size: 1.05rem; font-weight: 700; color: var(--colibri); margin-bottom: 6px; }
+    .concept-box > p { font-size: 0.82rem; color: var(--text-dim); margin-bottom: 16px; }
+    .concept-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .concept-col {
-      background: var(--card);
-      border-radius: 10px;
-      padding: 14px;
-      border: 1px solid var(--border);
+      background: var(--card); border-radius: 10px; padding: 14px;
+      border: 1px solid var(--border); text-align: center;
     }
-    .concept-col h4 {
-      font-size: 0.78rem;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .concept-col p {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 0;
-    }
+    .concept-col.highlight { border-color: var(--colibri); border-width: 2px; box-shadow: 0 0 0 3px rgba(232,93,93,0.08); }
+    .concept-col h4 { font-size: 0.85rem; font-weight: 600; margin-bottom: 2px; }
+    .concept-col p { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0; }
+    .concept-arrow { display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--text-muted); }
 
-    /* ===== Progress Bar ===== */
-    .progress-bar {
-      height: 6px;
-      background: rgba(0,0,0,0.06);
-      border-radius: 3px;
-      overflow: hidden;
-      margin-top: 8px;
+    /* ===== Roadmap ===== */
+    .roadmap { position: relative; padding-left: 36px; }
+    .roadmap::before {
+      content: ''; position: absolute; left: 13px; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(180deg, var(--colibri), var(--blue), var(--purple)); border-radius: 1px;
     }
-    .progress-fill {
-      height: 100%;
-      border-radius: 3px;
-      transition: width 1s ease;
+    .roadmap-item { position: relative; margin-bottom: 20px; }
+    .roadmap-item:last-child { margin-bottom: 0; }
+    .roadmap-dot {
+      position: absolute; left: -31px; top: 4px;
+      width: 10px; height: 10px; border-radius: 50%;
+      border: 3px solid var(--card); box-shadow: 0 0 0 2px;
     }
+    .roadmap-label { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 600; margin-bottom: 4px; }
+    .roadmap-desc { font-size: 0.78rem; color: var(--text-dim); }
 
-    /* ===== Footer ===== */
+    /* ===== Action Grid ===== */
+    .action-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    .action-category h4 { font-size: 0.82rem; font-weight: 700; margin-bottom: 10px; }
+    .action-list { list-style: none; }
+    .action-list li {
+      font-size: 0.78rem; color: var(--text-dim);
+      padding: 5px 0 5px 22px; position: relative;
+      border-bottom: 1px solid rgba(0,0,0,0.03);
+    }
+    .action-list li:last-child { border-bottom: none; }
+    .action-list li::before { content: ''; position: absolute; left: 2px; top: 10px; width: 8px; height: 8px; border: 2px solid var(--text-muted); border-radius: 2px; }
+
     .footer {
-      text-align: center;
-      padding: 40px 20px;
-      margin-top: 60px;
-      color: var(--text-muted);
-      font-size: 0.75rem;
+      text-align: center; padding: 40px 20px; margin-top: 60px;
+      color: var(--text-muted); font-size: 0.72rem;
     }
 
-    /* ===== Responsive ===== */
     @media (max-width: 640px) {
-      .hero h1 { font-size: 1.6rem; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-      .goal-card { grid-template-columns: 44px 1fr; }
-      .goal-number { width: 44px; height: 44px; font-size: 0.9rem; }
-      .hero-meta { gap: 12px; }
+      .hero h1 { font-size: 1.5rem; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .concept-cols { grid-template-columns: 1fr; }
+      .toc { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ===== HERO ===== -->
-  <div class="hero">
-    <div class="hero-content">
-      <div class="hero-badge">QUARTERLY PLANNING</div>
-      <h1>Q2 2026 クォーター計画</h1>
-      <div class="hero-sub">Q1振り返り × Q2目標設定 — キンジさんとのクォーター面談</div>
-      <div class="hero-meta">
-        <div class="hero-meta-item"><span class="icon">📅</span> 2026年4月1日</div>
-        <div class="hero-meta-item"><span class="icon">👥</span> 週間会議 + 1on1面談</div>
-        <div class="hero-meta-item"><span class="icon">🎯</span> 2026年4-6月</div>
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">QUARTERLY REVIEW</div>
+    <h1>Q1 2026 クォーター振り返り</h1>
+    <div class="hero-sub">キンジさんとの面談まとめ</div>
+    <div class="hero-meta">
+      <span>2026年4月1日</span>
+      <span>1on1面談 + 週間チーム会議</span>
+      <span>対象期間：2026年1-3月</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TOC ===== -->
+<div class="container">
+  <div class="toc">
+    <a href="#kpi">Part 1: KPI振り返り</a>
+    <a href="#onbo">Part 2: オンボーディング</a>
+    <a href="#vision">Part 3: これからのビジョン</a>
+    <a href="#next">Next Steps</a>
+  </div>
+
+  <!-- ===== Summary ===== -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-label">達成</div>
+      <div class="stat-value" style="color:var(--green);">2</div>
+      <div class="stat-note">/ 4 目標</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">一部達成</div>
+      <div class="stat-value" style="color:var(--yellow);">2</div>
+      <div class="stat-note">/ 4 目標</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">発展テーマ</div>
+      <div class="stat-value" style="color:var(--blue);">9</div>
+      <div class="stat-note">議論から派生</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">アクション</div>
+      <div class="stat-value" style="color:var(--purple);">16</div>
+      <div class="stat-note">Next Steps</div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- PART 1: KPI振り返り                         -->
+  <!-- ========================================== -->
+  <div class="section" id="kpi">
+    <div class="section-header">
+      <div class="section-num" style="background:var(--colibri-light);color:var(--colibri);">01</div>
+      <div>
+        <div class="section-title">KPI振り返り</div>
+        <div class="section-subtitle">Q1の個人目標 → 面談での議論 → 発展テーマ</div>
+      </div>
+    </div>
+
+    <!-- KPI 1 -->
+    <div class="card kpi-card">
+      <div class="kpi-header">
+        <span class="kpi-icon">🚀</span>
+        <span class="kpi-title">パートナー顧客を新たなフローでオンボできる</span>
+        <span class="kpi-badge badge-achieved">達成</span>
+      </div>
+      <div class="kpi-review">
+        新規4社が進行中。導入初期MTGは<strong>3週に1回</strong>の頻度で実施。1回目で計画シフト作成、2回目で実績入力・記録確認を説明するフローが確立された。この初期プロセスを乗り越えられないと解約リスクが高まる傾向も確認。
+      </div>
+      <div class="progress"><div class="progress-fill" style="width:100%;background:var(--green);"></div></div>
+
+      <div class="kpi-branches">
+        <div class="kpi-branch" style="border-left-color:var(--blue);background:var(--blue-light);">
+          <div class="branch-connector">└→</div>
+          <div class="branch-content">
+            <div class="branch-title">顧客進捗ダッシュボード構想</div>
+            <div class="branch-desc">顧客ごとの利用状況が担当者以外に分からない。まずExcelで進捗一覧を作り、運用→データ項目整理→エンジニアにデータ抽出→最終的にシステム化。</div>
+          </div>
+        </div>
+        <div class="kpi-branch" style="border-left-color:var(--yellow);background:var(--yellow-light);">
+          <div class="branch-connector">└→</div>
+          <div class="branch-content">
+            <div class="branch-title">帳票未利用の事業所が多い</div>
+            <div class="branch-desc">計画シフトは入力されているが実績記録が抜けているケースが多い。福島・イーフレンズ・ベストスタッフ等で帳票機能の利用が進まず、原因特定とフォローが必要。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kpi-actions">
+        <div class="kpi-actions-title">ここから生まれたアクション</div>
+        <div class="action-item">顧客進捗一覧表（Excel）をCSチームで作成</div>
+        <div class="action-item">ダッシュボード化に必要なデータ項目を整理</div>
+        <div class="action-item">帳票未利用の事業所の原因を個別に確認</div>
+      </div>
+    </div>
+
+    <!-- KPI 2 -->
+    <div class="card kpi-card">
+      <div class="kpi-header">
+        <span class="kpi-icon">⚙️</span>
+        <span class="kpi-title">毎月の研修運営業務を自動化できる</span>
+        <span class="kpi-badge badge-achieved">達成</span>
+      </div>
+      <div class="kpi-review">
+        研修コンテンツは整備済み。CFPがあれば一括出力できる見込みで、自動化はほぼ問題なし。看護関連の研修はキャンメンさんと擦り合わせ中で、金坂さんが再度関係者と話す予定。
+      </div>
+      <div class="progress"><div class="progress-fill" style="width:100%;background:var(--green);"></div></div>
+
+      <div class="kpi-branches">
+        <div class="kpi-branch" style="border-left-color:var(--purple);background:var(--purple-light);">
+          <div class="branch-connector">└→</div>
+          <div class="branch-content">
+            <div class="branch-title">受講管理表 + 入退職管理の機能追加</div>
+            <div class="branch-desc">受講管理表の出力は未完。入退職管理は最新従業員データとの差分チェックで対応可能と見込み。スプレッドシート連携で実装可能性を確認。</div>
+          </div>
+        </div>
+        <div class="kpi-branch" style="border-left-color:var(--green);background:var(--green-light);">
+          <div class="branch-connector">└→</div>
+          <div class="branch-content">
+            <div class="branch-title">法定研修の必須化</div>
+            <div class="branch-desc">法定研修を必須化し全員受講を徹底する方針。個別対応の研修は順番調整が必要だが、必須研修で抜け漏れを防止。</div>
+          </div>
+        </div>
+        <div class="kpi-branch" style="border-left-color:var(--cyan);background:var(--cyan-light);">
+          <div class="branch-connector">└→</div>
+          <div class="branch-content">
+            <div class="branch-title">Google Docs編集の自動化PoC</div>
+            <div class="branch-desc">ターミナルからGoogle Docs編集が可能に。完全自動化は困難でも、既存ドキュメントの編集自動化は3ヶ月で実現可能。マイケルさんと段階的自動化を計画。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kpi-actions">
+        <div class="kpi-actions-title">ここから生まれたアクション</div>
+        <div class="action-item">受講管理表の出力機能を実装・テスト完了</div>
+        <div class="action-item">入退職管理の差分チェックロジックを構築</div>
+        <div class="action-item">法定研修の必須化ルール・スケジュールを確定</div>
+        <div class="action-item">Google Docs自動化PoCを開始（3ヶ月計画）</div>
+      </div>
+    </div>
+
+    <!-- KPI 3 -->
+    <div class="card kpi-card">
+      <div class="kpi-header">
+        <span class="kpi-icon">🏥</span>
+        <span class="kpi-title">看護：加減算・マトリクス表を完成</span>
+        <span class="kpi-badge badge-partial">一部達成</span>
+      </div>
+      <div class="kpi-review">
+        キャンビル連携の課題整理中。回答可能な部分を整理し、レミさんに相談する部分をまとめる段階。看護領域は体系化が不十分で、看護以外の要素も含まれている可能性あり。
+      </div>
+      <div class="progress"><div class="progress-fill" style="width:55%;background:var(--yellow);"></div></div>
+
+      <div class="kpi-branches">
+        <div class="kpi-branch" style="border-left-color:var(--yellow);background:var(--yellow-light);">
+          <div class="branch-connector">└→</div>
+          <div class="branch-content">
+            <div class="branch-title">キャンビル連携の課題整理</div>
+            <div class="branch-desc">キャンビルからの質問に対し、回答可能な部分を整理。レミさんに相談する部分を切り分けてまとめる必要あり。</div>
+          </div>
+        </div>
+        <div class="kpi-branch" style="border-left-color:var(--red);background:var(--red-light);">
+          <div class="branch-connector">└→</div>
+          <div class="branch-content">
+            <div class="branch-title">ニコッツの前回失敗 → 看護プロセス再設計</div>
+            <div class="branch-desc">前回失敗を踏まえ、唐田さんが主体的に進める意向。入院後の退院プロセスに関する改善が必要。看護領域の研修・プロセスの体系化案を作成する方向。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kpi-actions">
+        <div class="kpi-actions-title">ここから生まれたアクション</div>
+        <div class="action-item">キャンビルの質問を整理し回答（レミさん相談分含む）</div>
+        <div class="action-item">看護領域の研修・プロセスの体系化案を作成</div>
+        <div class="action-item">前回失敗の振り返り資料を作成（唐田さんが改善案主導）</div>
+        <div class="action-item">キャンメン・金坂さんとの調整MTGを設定</div>
+      </div>
+    </div>
+
+    <!-- KPI 4 -->
+    <div class="card kpi-card">
+      <div class="kpi-header">
+        <span class="kpi-icon">🎓</span>
+        <span class="kpi-title">オンボ：顧客が一部自走できる</span>
+        <span class="kpi-badge badge-partial">一部達成</span>
+      </div>
+      <div class="kpi-review">
+        順調な顧客がいる一方（ファストホーム、タティヒエ、サクシード）、帳票未利用の事業所が複数。給与事前登録は金坂さんへの提案後2回で安定運用に到達し、トラブルなく運用できている。
+      </div>
+      <div class="progress"><div class="progress-fill" style="width:60%;background:var(--yellow);"></div></div>
+
+      <div class="kpi-branches">
+        <div class="kpi-branch" style="border-left-color:var(--cyan);background:var(--cyan-light);">
+          <div class="branch-connector">└→</div>
+          <div class="branch-content">
+            <div class="branch-title">CDI（AI指示報告）の精度向上とリリース計画</div>
+            <div class="branch-desc">エア密接度の精度向上が必須。精度だけでなく「いつリリースするか」で目標設定。CS側が実用レベルか判断し、エンジニアに積極的にフィードバックする。複数社ヒアリングと並行してプロンプト調整。</div>
+          </div>
+        </div>
+        <div class="kpi-branch" style="border-left-color:var(--green);background:var(--green-light);">
+          <div class="branch-connector">└→</div>
+          <div class="branch-content">
+            <div class="branch-title">給与事前登録が安定 → さらなる展開</div>
+            <div class="branch-desc">2回で運用安定。トラブルなし。実装を進めれば給与関連もある程度対応可能な手応えあり。</div>
+          </div>
+        </div>
+        <div class="kpi-branch" style="border-left-color:var(--purple);background:var(--purple-light);">
+          <div class="branch-connector">└→</div>
+          <div class="branch-content">
+            <div class="branch-title">補助金申請代行のAI活用</div>
+            <div class="branch-desc">過去の指摘事例をチェックリスト化。将来的にはAIエージェント開発を目指す。まず過去の書類や公式案内文をAIに学習させ標準化を実験。自治体ごとの要件差異や物理的作業が多く完全自動化は困難だが、段階的に進める。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kpi-actions">
+        <div class="kpi-actions-title">ここから生まれたアクション</div>
+        <div class="action-item">CDI精度向上（複数社ヒアリング＋プロンプト調整）</div>
+        <div class="action-item">補助金申請の過去指摘事例を棚卸し→チェックリスト化</div>
+        <div class="action-item">AI学習（申請業務の標準化）の実験を開始</div>
       </div>
     </div>
   </div>
 
-  <!-- ===== STATS ===== -->
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-card" style="border-left-color: var(--green);">
-        <div class="stat-label">Q1 個人目標</div>
-        <div class="stat-value" style="color: var(--green);">2/4</div>
-        <div class="stat-note">達成 + 2件一部達成</div>
+  <!-- ========================================== -->
+  <!-- PART 2: オンボーディング支援                  -->
+  <!-- ========================================== -->
+  <div class="section" id="onbo">
+    <div class="section-header">
+      <div class="section-num" style="background:var(--blue-light);color:var(--blue);">02</div>
+      <div>
+        <div class="section-title">オンボーディング支援の現状</div>
+        <div class="section-subtitle">新規顧客の導入プロセスと各事業所の状況</div>
       </div>
-      <div class="stat-card" style="border-left-color: var(--blue);">
-        <div class="stat-label">Q2 個人目標</div>
-        <div class="stat-value" style="color: var(--blue);">7</div>
-        <div class="stat-note">新規設定</div>
+    </div>
+
+    <!-- Onbo Flow -->
+    <div class="card" style="margin-bottom:20px;">
+      <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:14px;">導入初期プロセス（3週に1回MTG）</h3>
+      <div class="onbo-flow">
+        <div class="onbo-step" style="border-color:var(--colibri);border-width:2px;">
+          <div class="onbo-step-num">MTG 1</div>
+          <div class="onbo-step-name">計画シフト作成</div>
+          <div class="onbo-step-detail">ケアプランに基づく<br>定期スケジュール</div>
+        </div>
+        <div class="onbo-arrow">→</div>
+        <div class="onbo-step" style="border-color:var(--blue);border-width:2px;">
+          <div class="onbo-step-num">MTG 2</div>
+          <div class="onbo-step-name">実績入力・記録</div>
+          <div class="onbo-step-detail">実績シフト管理<br>記録確認方法</div>
+        </div>
+        <div class="onbo-arrow">→</div>
+        <div class="onbo-step" style="border-color:var(--green);border-width:2px;">
+          <div class="onbo-step-num">定着</div>
+          <div class="onbo-step-name">自走・帳票利用</div>
+          <div class="onbo-step-detail">帳票・請求連携<br>給与計算</div>
+        </div>
       </div>
-      <div class="stat-card" style="border-left-color: var(--purple);">
-        <div class="stat-label">Q2 チーム目標</div>
-        <div class="stat-value" style="color: var(--purple);">4</div>
-        <div class="stat-note">全社横断</div>
+      <div style="text-align:center;font-size:0.78rem;color:var(--red);font-weight:500;margin-top:8px;">
+        この初期プロセスを乗り越えられないと解約リスクが高まる傾向
       </div>
-      <div class="stat-card" style="border-left-color: var(--yellow);">
-        <div class="stat-label">4月アクション</div>
-        <div class="stat-value" style="color: var(--yellow);">7</div>
-        <div class="stat-note">月間タスク</div>
+    </div>
+
+    <!-- Customer Table -->
+    <div class="card">
+      <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:14px;">顧客ステータス一覧</h3>
+      <div style="overflow-x:auto;">
+        <table class="customer-table">
+          <thead>
+            <tr><th>事業所</th><th>ステータス</th><th>備考</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>ファストホーム</strong></td><td><span class="c-dot g"></span>順調</td><td>段階的に利用拡大中</td></tr>
+            <tr><td><strong>タティヒエ</strong></td><td><span class="c-dot g"></span>順調</td><td>5月完全切替予定</td></tr>
+            <tr><td><strong>サクシード</strong></td><td><span class="c-dot g"></span>順調</td><td>5月API連携予定</td></tr>
+            <tr><td><strong>福島事業所</strong></td><td><span class="c-dot r"></span>要対応</td><td>実績1/3、林氏との連絡困難、口座振替未提出、料金未払い</td></tr>
+            <tr><td><strong>イーフレンズ</strong></td><td><span class="c-dot y"></span>要確認</td><td>担当者多忙で社内教育が進まず、帳票未利用</td></tr>
+            <tr><td><strong>ベストスタッフ</strong></td><td><span class="c-dot y"></span>要確認</td><td>帳票未利用。原因不明</td></tr>
+            <tr><td><strong>あゆみの作品</strong></td><td><span class="c-dot y"></span>要確認</td><td>帳票未利用</td></tr>
+            <tr><td><strong>マル</strong></td><td><span class="c-dot y"></span>要確認</td><td>帳票未利用。移動支援が多いことが推測理由</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 
-  <!-- ===== NEW CONCEPT: ファンパ ===== -->
-  <div class="container section">
-    <div class="concept-box">
-      <h3>💡 新概念：「ファンパフォーマンス（ファンパ）」</h3>
-      <p>コスパ・タイパに続く第3の評価軸。一見非効率でも顧客がファンになる行動を評価する。営業→開発まで全社的に「ファンを創る」視点を導入。</p>
+  <!-- ========================================== -->
+  <!-- PART 3: これからのビジョン                    -->
+  <!-- ========================================== -->
+  <div class="section" id="vision">
+    <div class="section-header">
+      <div class="section-num" style="background:var(--purple-light);color:var(--purple);">03</div>
+      <div>
+        <div class="section-title">これからのビジョン</div>
+        <div class="section-subtitle">CS戦略・AI活用・今後の方向性</div>
+      </div>
+    </div>
+
+    <!-- ファンパ Concept -->
+    <div class="concept-box" style="margin-bottom:20px;">
+      <h3>新概念：「ファンパフォーマンス（ファンパ）」</h3>
+      <p>営業→開発まで全社的に、顧客を「ファン」にする視点を導入。一見非効率でも顧客満足度を高める行動を評価する、コスパ・タイパに続く第3の評価軸。</p>
       <div class="concept-cols">
         <div class="concept-col">
-          <h4>📐 コスパ</h4>
-          <p>コストに対する効果。従来の効率指標</p>
+          <h4>コスパ</h4>
+          <p>コストに対する効果</p>
         </div>
         <div class="concept-col">
-          <h4>⏱ タイパ</h4>
-          <p>時間に対する効果。スピード重視</p>
+          <h4>タイパ</h4>
+          <p>時間に対する効果</p>
         </div>
-        <div class="concept-col" style="border-color: var(--colibri); border-width: 2px;">
-          <h4 style="color: var(--colibri);">❤️ ファンパ 🆕</h4>
-          <p style="color: var(--text-dim);">顧客がファンになるか。丁寧なオンボ、範囲外の情報提供など</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== Q1 REVIEW ===== -->
-  <div class="container section">
-    <div class="section-header">
-      <div class="section-icon" style="background: var(--green-light); color: var(--green);">📊</div>
-      <div>
-        <div class="section-title">Q1 2026 振り返り（1-3月）</div>
-        <div class="section-subtitle">個人目標の達成状況</div>
-      </div>
-    </div>
-
-    <div class="review-grid">
-      <!-- 1 -->
-      <div class="card review-card">
-        <div class="review-card-header">
-          <span class="review-card-icon">🚀</span>
-          <span class="review-card-title">パートナー顧客の新フローオンボ</span>
-          <span class="review-status status-achieved">✅ 達成</span>
-        </div>
-        <div class="review-card-body">
-          <ul>
-            <li>新規4社が進行中</li>
-            <li>導入初期MTGは3週に1回で実施</li>
-            <li>1回目：計画シフト作成、2回目：実績入力・記録確認</li>
-            <li>このフローを乗り越えられないと解約リスク高</li>
-          </ul>
-        </div>
-        <div class="progress-bar"><div class="progress-fill" style="width:100%;background:var(--green);"></div></div>
-      </div>
-
-      <!-- 2 -->
-      <div class="card review-card">
-        <div class="review-card-header">
-          <span class="review-card-icon">⚙️</span>
-          <span class="review-card-title">研修運営業務の自動化</span>
-          <span class="review-status status-achieved">✅ 達成</span>
-        </div>
-        <div class="review-card-body">
-          <ul>
-            <li>CFPがあれば一括出力可能に</li>
-            <li>自動化はほぼ問題なし</li>
-            <li>看護研修はキャンメンさんと調整中</li>
-            <li>金坂さんが再度関係者と話す予定</li>
-          </ul>
-        </div>
-        <div class="progress-bar"><div class="progress-fill" style="width:100%;background:var(--green);"></div></div>
-      </div>
-
-      <!-- 3 -->
-      <div class="card review-card">
-        <div class="review-card-header">
-          <span class="review-card-icon">🏥</span>
-          <span class="review-card-title">看護：加減算・マトリクス表</span>
-          <span class="review-status status-partial">🔶 一部達成</span>
-        </div>
-        <div class="review-card-body">
-          <ul>
-            <li>キャンビル連携の課題整理中</li>
-            <li>回答可能な部分を整理中</li>
-            <li>レミさんに相談する部分をまとめる段階</li>
-            <li>Q2で仕様完了を目指す</li>
-          </ul>
-        </div>
-        <div class="progress-bar"><div class="progress-fill" style="width:60%;background:var(--yellow);"></div></div>
-      </div>
-
-      <!-- 4 -->
-      <div class="card review-card">
-        <div class="review-card-header">
-          <span class="review-card-icon">🎓</span>
-          <span class="review-card-title">オンボ：顧客が一部自走</span>
-          <span class="review-status status-partial">🔶 一部達成</span>
-        </div>
-        <div class="review-card-body">
-          <ul>
-            <li>順調：ファストホーム（段階的拡大）、タティヒエ（5月完全切替）、サクシード（5月API連携）</li>
-            <li>課題：複数事業所で帳票未利用</li>
-            <li>福島事業所：実績1/3、連絡困難、料金未払い</li>
-            <li>イーフレンズ：社内教育が進まず</li>
-          </ul>
-        </div>
-        <div class="progress-bar"><div class="progress-fill" style="width:55%;background:var(--yellow);"></div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== Q1 TEAM REVIEW ===== -->
-  <div class="container section">
-    <div class="section-header">
-      <div class="section-icon" style="background: var(--purple-light); color: var(--purple);">👥</div>
-      <div>
-        <div class="section-title">Q1 チーム目標の振り返り</div>
-        <div class="section-subtitle">チーム全体の進捗</div>
-      </div>
-    </div>
-
-    <div class="review-grid">
-      <div class="card review-card">
-        <div class="review-card-header">
-          <span class="review-card-icon">📋</span>
-          <span class="review-card-title">顧客管理ダッシュボード</span>
-          <span class="review-status status-missed">❌ 未達</span>
-        </div>
-        <div class="review-card-body">
-          <ul>
-            <li>担当者以外に顧客の利用状況が分からない</li>
-            <li>Q2でまずExcelで簡易一覧を作成</li>
-            <li>運用→データ項目整理→エンジニアにデータ抽出依頼→システム化</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card review-card">
-        <div class="review-card-header">
-          <span class="review-card-icon">🤖</span>
-          <span class="review-card-title">CDI（AI指示報告）</span>
-          <span class="review-status status-partial">🔶 進行中</span>
-        </div>
-        <div class="review-card-body">
-          <ul>
-            <li>ベータ版の精度向上中</li>
-            <li>「いつリリースするか」を軸に目標設定すべき</li>
-            <li>CS側が実用レベルか判断しフィードバック強化</li>
-            <li>複数社ヒアリング＋プロンプト調整を並行</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card review-card">
-        <div class="review-card-header">
-          <span class="review-card-icon">💰</span>
-          <span class="review-card-title">給与事前登録の運用</span>
-          <span class="review-status status-achieved">✅ 安定</span>
-        </div>
-        <div class="review-card-body">
-          <ul>
-            <li>金坂さんへの提案後、2回で安定</li>
-            <li>トラブルなく運用できている</li>
-            <li>実装を進めれば給与関連も対応可能な手応え</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card review-card">
-        <div class="review-card-header">
-          <span class="review-card-icon">❤️</span>
-          <span class="review-card-title">CS業務可視化 × ファンパ</span>
-          <span class="review-status status-partial">🔶 構想段階</span>
-        </div>
-        <div class="review-card-body">
-          <ul>
-            <li>「ファンパ」概念が提案された</li>
-            <li>人員増強の前にボトルネック特定が先</li>
-            <li>増員するならアップセル等の新チャレンジ担当</li>
-            <li>まずCSチームの業務時間配分を可視化</li>
-          </ul>
+        <div class="concept-col highlight">
+          <h4 style="color:var(--colibri);">ファンパ <span style="font-size:0.65rem;background:var(--colibri-light);padding:1px 6px;border-radius:6px;">NEW</span></h4>
+          <p style="color:var(--text-dim);">丁寧なオンボ、範囲外の情報提供など</p>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- ===== Q2 TEAM GOALS ===== -->
-  <div class="container section">
-    <div class="section-header">
-      <div class="section-icon" style="background: var(--blue-light); color: var(--blue);">🏢</div>
-      <div>
-        <div class="section-title">Q2 2026 チーム目標</div>
-        <div class="section-subtitle">全社横断で取り組む重点テーマ</div>
+    <!-- Vision Cards -->
+    <div class="vision-grid">
+      <div class="card vision-card" style="border-top-color:var(--colibri);">
+        <h3>CS戦略と体制</h3>
+        <p>「ファン」を創出するために、まず現状を可視化する</p>
+        <ul class="vision-points">
+          <li>CSチームの業務内容と時間配分を可視化</li>
+          <li>ボトルネックを特定してから人員検討</li>
+          <li>増員するならアップセル等の新チャレンジ担当</li>
+          <li>単純な業務分散の増員には慎重</li>
+        </ul>
       </div>
-    </div>
 
-    <div class="strategy-grid">
-      <div class="card strategy-card" style="border-top-color: var(--blue);">
-        <h3><span style="color:var(--blue);">📊</span> 顧客進捗ダッシュボード</h3>
-        <p>顧客ごとの利用状況を一目で把握できる仕組みを段階的に構築</p>
-        <ul class="strategy-points">
-          <li>まずExcelで顧客進捗一覧を手作業で作成</li>
-          <li>CSミーティングで運用→データ項目整理</li>
+      <div class="card vision-card" style="border-top-color:var(--cyan);">
+        <h3>AI活用の3本柱</h3>
+        <p>CDI・補助金AI・ドキュメント自動化で生産性を上げる</p>
+        <ul class="vision-points">
+          <li>CDI：精度向上＋リリース日を軸に目標設定</li>
+          <li>補助金：チェックリスト化→AIエージェント開発</li>
+          <li>ドキュメント：Google Docs編集自動化3ヶ月PoC</li>
+          <li>コア機能が固まれば外部統合で全体最適へ</li>
+        </ul>
+      </div>
+
+      <div class="card vision-card" style="border-top-color:var(--blue);">
+        <h3>顧客進捗の可視化</h3>
+        <p>担当者の頭の中にある情報をチームで共有する</p>
+        <ul class="vision-points">
+          <li>まずExcelで手作業の進捗一覧を作成</li>
+          <li>CSミーティングで運用しデータ項目を整理</li>
           <li>エンジニアに定期データ抽出を依頼</li>
-          <li>最終的にシステム化（admin CRM）</li>
-        </ul>
-      </div>
-
-      <div class="card strategy-card" style="border-top-color: var(--purple);">
-        <h3><span style="color:var(--purple);">🤖</span> CDI正式リリース</h3>
-        <p>AI指示報告機能をベータ→正式版へ</p>
-        <ul class="strategy-points">
-          <li>精度向上だけでなく「いつ出すか」で考える</li>
-          <li>CS側が実用レベルか判断→フィードバック</li>
-          <li>複数社ヒアリング＋プロンプト調整を並行</li>
-          <li>リリース可能な状態に持っていく</li>
-        </ul>
-      </div>
-
-      <div class="card strategy-card" style="border-top-color: var(--colibri);">
-        <h3><span style="color:var(--colibri);">❤️</span> ファンパKPI策定</h3>
-        <p>「ファンを創る」を測定可能な指標に</p>
-        <ul class="strategy-points">
-          <li>ファンパ評価基準を策定</li>
-          <li>各部署での実践計画を立てる</li>
-          <li>営業→開発まで全社で浸透</li>
-          <li>一見非効率でもファンパの高い施策を推進</li>
-        </ul>
-      </div>
-
-      <div class="card strategy-card" style="border-top-color: var(--green);">
-        <h3><span style="color:var(--green);">🔍</span> CS業務可視化</h3>
-        <p>人員増強の前に現状把握→ボトルネック特定</p>
-        <ul class="strategy-points">
-          <li>各担当者の業務内容と時間配分を整理</li>
-          <li>ボトルネックを特定</li>
-          <li>増員はアップセル等の新チャレンジ担当が理想</li>
-          <li>業務分散のための単純増員には慎重</li>
+          <li>最終的にadminダッシュボードへシステム化</li>
         </ul>
       </div>
     </div>
-  </div>
 
-  <!-- ===== Q2 PERSONAL GOALS ===== -->
-  <div class="container section">
-    <div class="section-header">
-      <div class="section-icon" style="background: var(--colibri-light); color: var(--colibri);">🎯</div>
-      <div>
-        <div class="section-title">Q2 2026 個人目標</div>
-        <div class="section-subtitle">杉 — 4月〜6月の重点取り組み</div>
-      </div>
-    </div>
-
-    <div class="goals-container">
-      <!-- Goal 1 -->
-      <div class="card goal-card">
-        <div class="goal-number" style="background: var(--cyan-light); color: var(--cyan);">01</div>
-        <div class="goal-content">
-          <h3>🤖 指示AI（CDI）出力の精度向上</h3>
-          <p>エア密接度の精度向上が最重要。達成できれば上下の改善が見込める。コア機能が固まれば外部統合で全体最適へ。</p>
-          <span class="goal-tag tag-ai">AI / エンジニア連携</span>
+    <!-- Roadmap -->
+    <div class="card" style="margin-top:20px;">
+      <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:16px;">Q2ロードマップ</h3>
+      <div class="roadmap">
+        <div class="roadmap-item">
+          <div class="roadmap-dot" style="color:var(--colibri);background:var(--colibri);"></div>
+          <div class="roadmap-label" style="color:var(--colibri);">4月 — 土台づくり</div>
+          <div class="roadmap-desc">CDIヒアリング開始 / 受講管理表実装 / Excel進捗一覧作成 / 福島事業所の緊急対応 / CS業務の可視化</div>
         </div>
-      </div>
-
-      <!-- Goal 2 -->
-      <div class="card goal-card">
-        <div class="goal-number" style="background: var(--blue-light); color: var(--blue);">02</div>
-        <div class="goal-content">
-          <h3>📊 受講管理表 + 入退職管理の機能追加</h3>
-          <p>受講管理表の出力は未完→実装＋テスト完了が目標。入退職管理は最新従業員データとの差分チェックで対応可能。スプレッドシート連携で構築。</p>
-          <span class="goal-tag tag-dev">開発 / 自動化</span>
+        <div class="roadmap-item">
+          <div class="roadmap-dot" style="color:var(--blue);background:var(--blue);"></div>
+          <div class="roadmap-label" style="color:var(--blue);">5月 — 本格稼働</div>
+          <div class="roadmap-desc">CDIリリース判断 / 法定研修の必須化運用開始 / タティヒエ完全切替 / サクシードAPI連携 / ダッシュボードデータ項目整理</div>
         </div>
-      </div>
-
-      <!-- Goal 3 -->
-      <div class="card goal-card">
-        <div class="goal-number" style="background: var(--green-light); color: var(--green);">03</div>
-        <div class="goal-content">
-          <h3>📝 法定研修を必須化し運用ルール確定</h3>
-          <p>全員受講を徹底する方針。個別対応の研修は順番調整が必要だが、まず必須研修で抜け漏れを防止。</p>
-          <span class="goal-tag tag-cs">CS / 運用</span>
-        </div>
-      </div>
-
-      <!-- Goal 4 -->
-      <div class="card goal-card">
-        <div class="goal-number" style="background: var(--purple-light); color: var(--purple);">04</div>
-        <div class="goal-content">
-          <h3>📄 Google Docs編集の自動化PoC（3ヶ月）</h3>
-          <p>ターミナルからGoogle Docs編集が可能に。完全自動化は困難でも、既存ドキュメントの編集自動化は3ヶ月で実現可能。マイケルさんと段階的自動化を計画。</p>
-          <span class="goal-tag tag-dev">開発 / 自動化</span>
-        </div>
-      </div>
-
-      <!-- Goal 5 -->
-      <div class="card goal-card">
-        <div class="goal-number" style="background: var(--red-light); color: var(--red);">05</div>
-        <div class="goal-content">
-          <h3>🏥 看護オンボプロセスの改善</h3>
-          <p>ニコッツ関連で前回失敗。前回ノートを踏まえ唐田さんが主体的に進める。入院後の退院プロセス改善、看護領域の体系化が課題。</p>
-          <span class="goal-tag tag-cs">CS / プロセス改善</span>
-        </div>
-      </div>
-
-      <!-- Goal 6 -->
-      <div class="card goal-card">
-        <div class="goal-number" style="background: var(--yellow-light); color: var(--yellow);">06</div>
-        <div class="goal-content">
-          <h3>🔗 看護加算：ココナース連携の仕様完了</h3>
-          <p>キャンビルからの質問を整理し、回答可能な部分をまとめる。レミさんに相談する部分も整理。基本療養費マトリックスの責任分界点は共有済み。</p>
-          <span class="goal-tag tag-cs">CS / 看護</span>
-        </div>
-      </div>
-
-      <!-- Goal 7 -->
-      <div class="card goal-card">
-        <div class="goal-number" style="background: var(--cyan-light); color: var(--cyan);">07</div>
-        <div class="goal-content">
-          <h3>🤖 補助金申請代行のAI活用開始</h3>
-          <p>過去の指摘事例をチェックリスト化。将来的には担当者を支援するAIエージェント開発を目指す。まず過去の書類・公式案内文をAIに学習させ標準化を実験。</p>
-          <span class="goal-tag tag-ai">AI / 新規</span>
+        <div class="roadmap-item">
+          <div class="roadmap-dot" style="color:var(--purple);background:var(--purple);"></div>
+          <div class="roadmap-label" style="color:var(--purple);">6月 — 仕上げ</div>
+          <div class="roadmap-desc">CDI運用レビュー / 看護加算仕様完了 / Google Docs自動化PoC完了 / ファンパKPI中間レビュー / Q2振り返り準備</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ===== CUSTOMER STATUS ===== -->
-  <div class="container section">
+  <!-- ========================================== -->
+  <!-- NEXT STEPS                                 -->
+  <!-- ========================================== -->
+  <div class="section" id="next">
     <div class="section-header">
-      <div class="section-icon" style="background: var(--yellow-light); color: var(--yellow);">📋</div>
+      <div class="section-num" style="background:var(--green-light);color:var(--green);">NS</div>
       <div>
-        <div class="section-title">顧客状況サマリー</div>
-        <div class="section-subtitle">週間会議で確認された各事業所の進捗</div>
-      </div>
-    </div>
-
-    <div class="card" style="overflow-x: auto;">
-      <table class="customer-table">
-        <thead>
-          <tr>
-            <th>事業所</th>
-            <th>ステータス</th>
-            <th>備考</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>ファストホーム</strong></td>
-            <td><span class="c-status"><span class="c-dot green"></span> 順調</span></td>
-            <td>段階的に利用拡大中</td>
-          </tr>
-          <tr>
-            <td><strong>タティヒエ</strong></td>
-            <td><span class="c-status"><span class="c-dot green"></span> 順調</span></td>
-            <td>5月完全切替予定</td>
-          </tr>
-          <tr>
-            <td><strong>サクシード</strong></td>
-            <td><span class="c-status"><span class="c-dot green"></span> 順調</span></td>
-            <td>5月API連携予定</td>
-          </tr>
-          <tr>
-            <td><strong>福島事業所</strong></td>
-            <td><span class="c-status"><span class="c-dot red"></span> 要対応</span></td>
-            <td>実績1/3、連絡困難（林氏）、口座振替未提出、料金未払い</td>
-          </tr>
-          <tr>
-            <td><strong>イーフレンズ</strong></td>
-            <td><span class="c-status"><span class="c-dot yellow"></span> 要確認</span></td>
-            <td>担当者多忙で社内教育が進まず、帳票未利用</td>
-          </tr>
-          <tr>
-            <td><strong>ベストスタッフ</strong></td>
-            <td><span class="c-status"><span class="c-dot yellow"></span> 要確認</span></td>
-            <td>帳票未利用。原因不明</td>
-          </tr>
-          <tr>
-            <td><strong>あゆみの作品</strong></td>
-            <td><span class="c-status"><span class="c-dot yellow"></span> 要確認</span></td>
-            <td>帳票未利用</td>
-          </tr>
-          <tr>
-            <td><strong>マル</strong></td>
-            <td><span class="c-status"><span class="c-dot yellow"></span> 要確認</span></td>
-            <td>帳票未利用。移動支援が多いことが推測理由</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- ===== APRIL ACTIONS ===== -->
-  <div class="container section">
-    <div class="section-header">
-      <div class="section-icon" style="background: var(--colibri-light); color: var(--colibri);">✅</div>
-      <div>
-        <div class="section-title">4月のアクションアイテム</div>
-        <div class="section-subtitle">今月中に実行するタスク</div>
+        <div class="section-title">Next Steps</div>
+        <div class="section-subtitle">両会議から出たアクションアイテム</div>
       </div>
     </div>
 
@@ -981,112 +658,51 @@
       <div class="card action-category">
         <h4>🤖 AI・開発</h4>
         <ul class="action-list">
-          <li>CDI出力の精度向上（複数社ヒアリング＋プロンプト調整）</li>
-          <li>受講管理表の出力機能を実装しテスト完了</li>
+          <li>CDI精度向上（ヒアリング＋プロンプト調整）</li>
+          <li>受講管理表の出力機能を実装</li>
           <li>入退職管理の差分チェックロジック構築</li>
-          <li>補助金申請の過去指摘事例を棚卸し→チェックリスト化</li>
-          <li>AI学習（申請業務の標準化）の実験を裏で開始</li>
+          <li>補助金の過去指摘事例を棚卸し→チェックリスト化</li>
+          <li>AI学習（申請業務の標準化）の実験を開始</li>
+          <li>Google Docs自動化PoCを開始</li>
           <li>新規法人の地域単価を自動設定する仕組みを検討</li>
         </ul>
       </div>
-
       <div class="card action-category">
-        <h4>👥 CS・顧客対応</h4>
+        <h4>👥 CS・体制</h4>
         <ul class="action-list">
-          <li>CSチームの業務時間配分を整理し可視化</li>
-          <li>顧客進捗一覧表（Excel）をCSチームで作成</li>
+          <li>CSチームの業務時間配分を整理・可視化</li>
+          <li>顧客進捗一覧（Excel）を作成</li>
           <li>ダッシュボードに必要なデータ項目を整理</li>
           <li>営業担当が人員を欲している理由を整理</li>
+          <li>法定研修の必須化ルール・スケジュール確定</li>
         </ul>
       </div>
-
       <div class="card action-category">
         <h4>🏥 看護・個別対応</h4>
         <ul class="action-list">
-          <li>キャンビルからの質問を整理し回答</li>
-          <li>看護研修のキャンメン・金坂さんとの調整MTG設定</li>
-          <li>前回失敗（ニコッツ）の振り返り資料を作成</li>
-          <li>法定研修の必須化ルール・スケジュールを確定</li>
+          <li>キャンビルの質問を整理し回答</li>
+          <li>キャンメン・金坂さんとの調整MTG設定</li>
+          <li>ニコッツの振り返り資料を作成</li>
+          <li>看護領域の研修・プロセス体系化案を作成</li>
         </ul>
       </div>
-
       <div class="card action-category">
-        <h4>🔥 緊急・個別顧客</h4>
+        <h4>🔥 顧客・緊急</h4>
         <ul class="action-list">
-          <li>福島事業所・林氏に電話：口座振替依頼書の記入・郵送を促す</li>
-          <li>福島事業所：記録書き残しゼロ化を働きかけ</li>
-          <li>福島事業所：請求連携（まもる君）の検証</li>
-          <li>イーフレンズの社内教育状況を次回MTGで確認</li>
+          <li>福島：林氏に電話（口座振替依頼書の記入・郵送）</li>
+          <li>福島：記録の書き残しゼロ化を働きかけ</li>
+          <li>福島：請求連携（まもる君）の検証</li>
+          <li>イーフレンズ：社内教育状況を次回MTGで確認</li>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- ===== TIMELINE ===== -->
-  <div class="container section">
-    <div class="section-header">
-      <div class="section-icon" style="background: var(--purple-light); color: var(--purple);">📅</div>
-      <div>
-        <div class="section-title">Q2 ロードマップ</div>
-        <div class="section-subtitle">月ごとのマイルストーン</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot" style="color: var(--colibri); background: var(--colibri);"></div>
-          <div class="timeline-month" style="color: var(--colibri);">4月 — 土台づくり</div>
-          <div class="timeline-content">
-            <ul>
-              <li>CDI精度向上：ヒアリング＋プロンプト調整開始</li>
-              <li>受講管理表の出力機能を実装＋テスト</li>
-              <li>顧客進捗一覧（Excel）を作成し運用開始</li>
-              <li>補助金申請チェックリストの棚卸し</li>
-              <li>福島事業所の緊急対応（口座振替・記録・請求連携）</li>
-              <li>CS業務の時間配分を可視化</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot" style="color: var(--blue); background: var(--blue);"></div>
-          <div class="timeline-month" style="color: var(--blue);">5月 — 本格稼働</div>
-          <div class="timeline-content">
-            <ul>
-              <li>CDI正式リリース判断→複数社導入開始</li>
-              <li>入退職管理機能の差分チェック稼働</li>
-              <li>法定研修の必須化ルール運用開始</li>
-              <li>Google Docs自動化PoCの中間確認</li>
-              <li>タティヒエ完全切替、サクシードAPI連携</li>
-              <li>ダッシュボードのデータ項目をエンジニアに依頼</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot" style="color: var(--purple); background: var(--purple);"></div>
-          <div class="timeline-month" style="color: var(--purple);">6月 — 仕上げ・振り返り</div>
-          <div class="timeline-content">
-            <ul>
-              <li>CDI複数社での運用結果レビュー</li>
-              <li>看護加算のココナース連携仕様完了</li>
-              <li>Google Docs自動化PoC完了</li>
-              <li>補助金AI実験の成果まとめ</li>
-              <li>ファンパKPIの中間レビュー</li>
-              <li>Q2振り返り＋Q3目標設定の準備</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== FOOTER ===== -->
   <div class="footer">
-    <p>Q2 2026 Quarter Plan — Colibri CS Team</p>
-    <p style="margin-top:4px;">作成日: 2026年4月1日 ｜ キンジさんとのクォーター面談に基づく</p>
+    <p>Q1 2026 Quarter Review — Colibri CS</p>
+    <p style="margin-top:4px;">2026年4月1日 ｜ キンジさんとのクォーター面談 + 週間チーム会議に基づく</p>
   </div>
 
+</div><!-- /container -->
 </body>
 </html>
