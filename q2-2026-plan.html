@@ -9,667 +9,465 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #f0f2f5;
-      --card: #ffffff;
-      --text: #1a1a2e;
-      --text-dim: #475569;
-      --text-muted: #94a3b8;
-      --colibri: #e85d5d;
-      --colibri-light: rgba(232,93,93,0.07);
-      --green: #16a34a;
-      --green-light: rgba(22,163,74,0.07);
-      --yellow: #d97706;
-      --yellow-light: rgba(217,119,6,0.07);
-      --red: #dc2626;
-      --red-light: rgba(220,38,38,0.07);
-      --blue: #2563eb;
-      --blue-light: rgba(37,99,235,0.07);
-      --purple: #7c3aed;
-      --purple-light: rgba(124,58,237,0.07);
-      --cyan: #0891b2;
-      --cyan-light: rgba(8,145,178,0.07);
-      --border: rgba(0,0,0,0.06);
-      --shadow: 0 1px 3px rgba(0,0,0,0.06);
-      --shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
+      --bg: #f0f2f5; --card: #fff; --text: #1a1a2e; --dim: #475569; --muted: #94a3b8;
+      --colibri: #e85d5d; --green: #16a34a; --yellow: #d97706; --red: #dc2626;
+      --blue: #2563eb; --purple: #7c3aed; --cyan: #0891b2;
+      --border: rgba(0,0,0,0.06); --shadow: 0 1px 3px rgba(0,0,0,0.06);
     }
 
     html { font-size: 15px; scroll-behavior: smooth; }
-    body {
-      font-family: 'Noto Sans JP', -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.8;
-    }
+    body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
 
-    .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
-
-    /* ===== Hero ===== */
+    /* Hero */
     .hero {
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-      color: white;
-      padding: 56px 24px 44px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+      color: #fff; padding: 52px 24px 40px; text-align: center; position: relative; overflow: hidden;
     }
     .hero::before {
-      content: '';
-      position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-      background: radial-gradient(circle at 30% 70%, rgba(232,93,93,0.12) 0%, transparent 50%),
-                  radial-gradient(circle at 70% 30%, rgba(37,99,235,0.08) 0%, transparent 50%);
+      content: ''; position: absolute; inset: -50%; width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 70%, rgba(232,93,93,0.12), transparent 50%);
     }
-    .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
-    .hero-badge {
-      display: inline-block;
-      background: rgba(232,93,93,0.2); border: 1px solid rgba(232,93,93,0.4);
-      color: #f87171; font-size: 0.7rem; font-weight: 600;
-      padding: 4px 16px; border-radius: 20px; letter-spacing: 0.1em; margin-bottom: 14px;
-    }
-    .hero h1 { font-size: 2rem; font-weight: 900; margin-bottom: 6px; letter-spacing: -0.02em; }
-    .hero-sub { font-size: 0.9rem; color: rgba(255,255,255,0.65); margin-bottom: 20px; }
-    .hero-meta { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+    .hero-inner { position: relative; z-index: 1; }
+    .badge { display: inline-block; background: rgba(232,93,93,0.2); border: 1px solid rgba(232,93,93,0.4); color: #f87171; font-size: 0.68rem; font-weight: 600; padding: 3px 14px; border-radius: 20px; letter-spacing: 0.1em; margin-bottom: 12px; }
+    .hero h1 { font-size: 1.9rem; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 4px; }
+    .hero-sub { font-size: 0.88rem; color: rgba(255,255,255,0.6); margin-bottom: 16px; }
+    .hero-meta { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; font-size: 0.75rem; color: rgba(255,255,255,0.45); }
 
-    /* ===== TOC ===== */
-    .toc {
-      display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
-      margin-top: -20px; position: relative; z-index: 2;
-    }
-    .toc a {
-      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
-      padding: 10px 20px; font-size: 0.82rem; font-weight: 600;
-      color: var(--text-dim); text-decoration: none; box-shadow: var(--shadow-lg);
-      transition: all 0.2s;
-    }
-    .toc a:hover { transform: translateY(-1px); border-color: var(--colibri); color: var(--colibri); }
-
-    /* ===== Section ===== */
-    .section { margin-top: 48px; }
-    .section-header {
-      display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
-      padding-bottom: 12px; border-bottom: 2px solid var(--border);
-    }
-    .section-num {
-      width: 36px; height: 36px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 700; flex-shrink: 0;
-    }
-    .section-title { font-size: 1.2rem; font-weight: 700; }
-    .section-subtitle { font-size: 0.75rem; color: var(--text-muted); }
-
-    /* ===== Cards ===== */
-    .card {
-      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
-      padding: 24px; box-shadow: var(--shadow); transition: transform 0.15s;
-    }
-    .card:hover { transform: translateY(-1px); }
-
-    /* ===== Summary Stats ===== */
-    .stats-row {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 24px;
-    }
-    .stat-card {
-      background: var(--card); border-radius: 12px; padding: 16px 20px;
-      box-shadow: var(--shadow); text-align: center;
-    }
-    .stat-label { font-size: 0.68rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
-    .stat-value { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 700; margin: 2px 0; }
-    .stat-note { font-size: 0.7rem; color: var(--text-muted); }
-
-    /* ===== KPI Card ===== */
-    .kpi-card { margin-bottom: 20px; overflow: hidden; }
-    .kpi-header {
-      display: flex; align-items: center; gap: 12px;
-      padding-bottom: 14px; border-bottom: 1px solid var(--border); margin-bottom: 14px;
-    }
-    .kpi-icon { font-size: 1.4rem; }
-    .kpi-title { font-size: 1rem; font-weight: 700; flex: 1; }
-    .kpi-badge {
-      font-size: 0.7rem; font-weight: 600; padding: 3px 12px; border-radius: 10px;
-    }
-    .badge-achieved { background: var(--green-light); color: var(--green); }
-    .badge-partial { background: var(--yellow-light); color: var(--yellow); }
-
-    .kpi-review {
-      font-size: 0.84rem; color: var(--text-dim); margin-bottom: 16px; line-height: 1.8;
-    }
-
-    /* Branch lines */
-    .kpi-branches { margin-top: 16px; }
-    .kpi-branch {
-      display: flex; gap: 12px; margin-bottom: 12px;
-      padding: 12px 16px; border-radius: 10px; border-left: 3px solid;
-    }
-    .branch-connector {
-      flex-shrink: 0; width: 20px; display: flex; align-items: flex-start; padding-top: 2px;
-      font-size: 0.85rem; color: var(--text-muted);
-    }
-    .branch-content { flex: 1; }
-    .branch-title { font-size: 0.82rem; font-weight: 600; margin-bottom: 2px; }
-    .branch-desc { font-size: 0.78rem; color: var(--text-dim); }
-
-    .kpi-actions {
-      margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--border);
-    }
-    .kpi-actions-title {
-      font-size: 0.72rem; font-weight: 600; color: var(--text-muted);
-      text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;
-    }
-    .action-item {
-      font-size: 0.8rem; color: var(--text-dim);
-      padding: 3px 0 3px 20px; position: relative;
-    }
-    .action-item::before { content: ''; position: absolute; left: 2px; top: 11px; width: 8px; height: 8px; border: 2px solid var(--text-muted); border-radius: 2px; }
-
-    /* ===== Progress bar ===== */
-    .progress { height: 5px; background: rgba(0,0,0,0.05); border-radius: 3px; margin-top: 10px; overflow: hidden; }
-    .progress-fill { height: 100%; border-radius: 3px; }
-
-    /* ===== Customer Table ===== */
-    .customer-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.82rem; }
-    .customer-table th {
-      background: #f8f9fa; font-weight: 600; font-size: 0.7rem; color: var(--text-muted);
-      text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 14px; text-align: left;
-      border-bottom: 2px solid var(--border);
-    }
-    .customer-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dim); }
-    .customer-table tr:last-child td { border-bottom: none; }
-    .customer-table tr:hover td { background: #fafbfc; }
-    .c-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; vertical-align: middle; }
-    .c-dot.g { background: var(--green); }
-    .c-dot.y { background: var(--yellow); }
-    .c-dot.r { background: var(--red); }
-
-    /* ===== Onbo Flow ===== */
-    .onbo-flow {
-      display: flex; align-items: center; justify-content: center;
-      gap: 0; flex-wrap: wrap; margin: 20px 0;
-    }
-    .onbo-step {
+    /* Nav */
+    .nav { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: -18px; position: relative; z-index: 2; }
+    .nav a {
       background: var(--card); border: 1px solid var(--border); border-radius: 10px;
-      padding: 12px 18px; text-align: center; min-width: 140px;
+      padding: 8px 18px; font-size: 0.8rem; font-weight: 600; color: var(--dim);
+      text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.06); transition: all 0.2s;
     }
-    .onbo-step-num { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--text-muted); }
-    .onbo-step-name { font-size: 0.82rem; font-weight: 600; }
-    .onbo-step-detail { font-size: 0.72rem; color: var(--text-dim); }
-    .onbo-arrow { font-size: 1.2rem; color: var(--text-muted); padding: 0 6px; }
+    .nav a:hover { border-color: var(--colibri); color: var(--colibri); transform: translateY(-1px); }
 
-    /* ===== Vision ===== */
-    .vision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    /* Sections */
+    .sec { margin-top: 44px; }
+    .sec-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+    .sec-num { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; font-weight: 700; flex-shrink: 0; }
+    .sec-title { font-size: 1.15rem; font-weight: 700; }
+    .sec-sub { font-size: 0.72rem; color: var(--muted); }
+
+    /* Card */
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; box-shadow: var(--shadow); margin-bottom: 16px; }
+    .card h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 10px; }
+
+    /* KPI compact */
+    .kpi-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .kpi-mini { display: flex; align-items: flex-start; gap: 10px; padding: 16px; }
+    .kpi-mini-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+    .kpi-mini-title { font-size: 0.85rem; font-weight: 600; margin-bottom: 2px; }
+    .kpi-mini-note { font-size: 0.75rem; color: var(--dim); }
+    .kpi-badge { font-size: 0.65rem; font-weight: 600; padding: 2px 8px; border-radius: 8px; margin-left: 6px; }
+    .bg-green { background: rgba(22,163,74,0.08); color: var(--green); }
+    .bg-yellow { background: rgba(217,119,6,0.08); color: var(--yellow); }
+
+    /* Onbo flow */
+    .flow { display: flex; align-items: stretch; gap: 0; margin: 20px 0; flex-wrap: wrap; justify-content: center; }
+    .flow-step {
+      flex: 1; min-width: 180px; max-width: 260px;
+      border: 2px solid; border-radius: 12px; padding: 18px; text-align: center;
+      position: relative; background: var(--card);
+    }
+    .flow-step-num { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 0.1em; }
+    .flow-step-name { font-size: 0.92rem; font-weight: 700; margin: 4px 0; }
+    .flow-step-desc { font-size: 0.75rem; color: var(--dim); line-height: 1.5; }
+    .flow-arr { display: flex; align-items: center; font-size: 1.4rem; color: var(--muted); padding: 0 4px; }
+
+    /* Alert callout */
+    .callout {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 14px 18px; border-radius: 10px; font-size: 0.8rem; margin-top: 10px;
+    }
+    .callout-icon { font-size: 1.1rem; flex-shrink: 0; }
+
+    /* Customer table */
+    .tbl { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.82rem; }
+    .tbl th { background: #f8f9fa; font-weight: 600; font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; padding: 9px 14px; text-align: left; border-bottom: 2px solid var(--border); }
+    .tbl td { padding: 9px 14px; border-bottom: 1px solid var(--border); color: var(--dim); }
+    .tbl tr:last-child td { border-bottom: none; }
+    .tbl tr:hover td { background: #fafbfc; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; vertical-align: middle; }
+
+    /* Challenge card */
+    .challenge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+    .challenge-card { border-left: 3px solid; padding-left: 16px; }
+    .challenge-card h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; }
+    .challenge-card p { font-size: 0.78rem; color: var(--dim); }
+
+    /* Vision */
+    .vision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
     .vision-card { border-top: 3px solid; }
-    .vision-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
-    .vision-card p { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 10px; }
-    .vision-points { list-style: none; }
-    .vision-points li {
-      font-size: 0.78rem; color: var(--text-dim);
-      padding: 3px 0 3px 18px; position: relative;
-    }
-    .vision-points li::before { content: '→'; position: absolute; left: 0; color: var(--text-muted); }
+    .vision-card h3 { font-size: 0.92rem; }
+    .vision-card p { font-size: 0.78rem; color: var(--dim); margin-bottom: 8px; }
+    .vp { list-style: none; }
+    .vp li { font-size: 0.78rem; color: var(--dim); padding: 3px 0 3px 16px; position: relative; }
+    .vp li::before { content: '→'; position: absolute; left: 0; color: var(--muted); }
 
-    /* ===== Concept ===== */
-    .concept-box {
-      background: linear-gradient(135deg, rgba(232,93,93,0.04), rgba(37,99,235,0.04));
-      border: 1px solid rgba(232,93,93,0.15); border-radius: 14px; padding: 28px;
+    /* Concept */
+    .concept {
+      background: linear-gradient(135deg, rgba(232,93,93,0.04), rgba(37,99,235,0.03));
+      border: 1px solid rgba(232,93,93,0.15); border-radius: 14px; padding: 26px; margin-bottom: 18px;
     }
-    .concept-box h3 { font-size: 1.05rem; font-weight: 700; color: var(--colibri); margin-bottom: 6px; }
-    .concept-box > p { font-size: 0.82rem; color: var(--text-dim); margin-bottom: 16px; }
-    .concept-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-    .concept-col {
-      background: var(--card); border-radius: 10px; padding: 14px;
-      border: 1px solid var(--border); text-align: center;
-    }
-    .concept-col.highlight { border-color: var(--colibri); border-width: 2px; box-shadow: 0 0 0 3px rgba(232,93,93,0.08); }
-    .concept-col h4 { font-size: 0.85rem; font-weight: 600; margin-bottom: 2px; }
-    .concept-col p { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0; }
-    .concept-arrow { display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--text-muted); }
+    .concept h3 { font-size: 1rem; font-weight: 700; color: var(--colibri); margin-bottom: 6px; }
+    .concept > p { font-size: 0.8rem; color: var(--dim); margin-bottom: 14px; }
+    .concept-row { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 8px; align-items: center; }
+    .concept-col { background: var(--card); border-radius: 10px; padding: 14px; border: 1px solid var(--border); text-align: center; }
+    .concept-col.hl { border-color: var(--colibri); border-width: 2px; box-shadow: 0 0 0 3px rgba(232,93,93,0.08); }
+    .concept-col h4 { font-size: 0.82rem; font-weight: 600; margin-bottom: 2px; }
+    .concept-col p { font-size: 0.7rem; color: var(--muted); margin: 0; }
+    .concept-arr { text-align: center; font-size: 1.2rem; color: var(--muted); }
 
-    /* ===== Roadmap ===== */
-    .roadmap { position: relative; padding-left: 36px; }
-    .roadmap::before {
-      content: ''; position: absolute; left: 13px; top: 0; bottom: 0; width: 2px;
-      background: linear-gradient(180deg, var(--colibri), var(--blue), var(--purple)); border-radius: 1px;
-    }
-    .roadmap-item { position: relative; margin-bottom: 20px; }
-    .roadmap-item:last-child { margin-bottom: 0; }
-    .roadmap-dot {
-      position: absolute; left: -31px; top: 4px;
-      width: 10px; height: 10px; border-radius: 50%;
-      border: 3px solid var(--card); box-shadow: 0 0 0 2px;
-    }
-    .roadmap-label { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 600; margin-bottom: 4px; }
-    .roadmap-desc { font-size: 0.78rem; color: var(--text-dim); }
+    /* Roadmap */
+    .roadmap { position: relative; padding-left: 34px; }
+    .roadmap::before { content: ''; position: absolute; left: 12px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--colibri), var(--blue), var(--purple)); border-radius: 1px; }
+    .rm-item { position: relative; margin-bottom: 18px; }
+    .rm-item:last-child { margin-bottom: 0; }
+    .rm-dot { position: absolute; left: -30px; top: 3px; width: 10px; height: 10px; border-radius: 50%; border: 3px solid var(--card); box-shadow: 0 0 0 2px; }
+    .rm-label { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 600; margin-bottom: 3px; }
+    .rm-desc { font-size: 0.78rem; color: var(--dim); }
 
-    /* ===== Action Grid ===== */
-    .action-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
-    .action-category h4 { font-size: 0.82rem; font-weight: 700; margin-bottom: 10px; }
-    .action-list { list-style: none; }
-    .action-list li {
-      font-size: 0.78rem; color: var(--text-dim);
-      padding: 5px 0 5px 22px; position: relative;
-      border-bottom: 1px solid rgba(0,0,0,0.03);
-    }
-    .action-list li:last-child { border-bottom: none; }
-    .action-list li::before { content: ''; position: absolute; left: 2px; top: 10px; width: 8px; height: 8px; border: 2px solid var(--text-muted); border-radius: 2px; }
+    /* Actions */
+    .act-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    .act-cat h4 { font-size: 0.82rem; font-weight: 700; margin-bottom: 8px; }
+    .act-list { list-style: none; }
+    .act-list li { font-size: 0.76rem; color: var(--dim); padding: 4px 0 4px 20px; position: relative; border-bottom: 1px solid rgba(0,0,0,0.03); }
+    .act-list li:last-child { border-bottom: none; }
+    .act-list li::before { content: ''; position: absolute; left: 2px; top: 9px; width: 7px; height: 7px; border: 2px solid var(--muted); border-radius: 2px; }
 
-    .footer {
-      text-align: center; padding: 40px 20px; margin-top: 60px;
-      color: var(--text-muted); font-size: 0.72rem;
-    }
+    .footer { text-align: center; padding: 36px 20px; margin-top: 56px; color: var(--muted); font-size: 0.7rem; }
 
     @media (max-width: 640px) {
-      .hero h1 { font-size: 1.5rem; }
-      .stats-row { grid-template-columns: repeat(2, 1fr); }
-      .concept-cols { grid-template-columns: 1fr; }
-      .toc { flex-direction: column; align-items: center; }
+      .hero h1 { font-size: 1.4rem; }
+      .kpi-row { grid-template-columns: 1fr; }
+      .concept-row { grid-template-columns: 1fr; }
+      .concept-arr { transform: rotate(90deg); }
     }
   </style>
 </head>
 <body>
 
-<!-- ===== HERO ===== -->
 <div class="hero">
-  <div class="hero-content">
-    <div class="hero-badge">QUARTERLY REVIEW</div>
+  <div class="hero-inner">
+    <div class="badge">QUARTERLY REVIEW</div>
     <h1>Q1 2026 クォーター振り返り</h1>
     <div class="hero-sub">キンジさんとの面談まとめ</div>
     <div class="hero-meta">
-      <span>2026年4月1日</span>
-      <span>1on1面談 + 週間チーム会議</span>
-      <span>対象期間：2026年1-3月</span>
+      <span>2026年4月1日</span><span>1on1面談 + 週間チーム会議</span><span>対象：2026年1-3月</span>
     </div>
   </div>
 </div>
 
-<!-- ===== TOC ===== -->
-<div class="container">
-  <div class="toc">
-    <a href="#kpi">Part 1: KPI振り返り</a>
-    <a href="#onbo">Part 2: オンボーディング</a>
-    <a href="#vision">Part 3: これからのビジョン</a>
+<div class="wrap">
+  <div class="nav">
+    <a href="#kpi">KPI振り返り</a>
+    <a href="#onbo">オンボーディング</a>
+    <a href="#vision">これからのビジョン</a>
     <a href="#next">Next Steps</a>
   </div>
 
-  <!-- ===== Summary ===== -->
-  <div class="stats-row">
-    <div class="stat-card">
-      <div class="stat-label">達成</div>
-      <div class="stat-value" style="color:var(--green);">2</div>
-      <div class="stat-note">/ 4 目標</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">一部達成</div>
-      <div class="stat-value" style="color:var(--yellow);">2</div>
-      <div class="stat-note">/ 4 目標</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">発展テーマ</div>
-      <div class="stat-value" style="color:var(--blue);">9</div>
-      <div class="stat-note">議論から派生</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">アクション</div>
-      <div class="stat-value" style="color:var(--purple);">16</div>
-      <div class="stat-note">Next Steps</div>
-    </div>
-  </div>
-
-  <!-- ========================================== -->
-  <!-- PART 1: KPI振り返り                         -->
-  <!-- ========================================== -->
-  <div class="section" id="kpi">
-    <div class="section-header">
-      <div class="section-num" style="background:var(--colibri-light);color:var(--colibri);">01</div>
-      <div>
-        <div class="section-title">KPI振り返り</div>
-        <div class="section-subtitle">Q1の個人目標 → 面談での議論 → 発展テーマ</div>
-      </div>
+  <!-- ================================ -->
+  <!-- KPI（コンパクト）                  -->
+  <!-- ================================ -->
+  <div class="sec" id="kpi">
+    <div class="sec-head">
+      <div class="sec-num" style="background:rgba(232,93,93,0.07);color:var(--colibri);">01</div>
+      <div><div class="sec-title">KPI振り返り</div><div class="sec-sub">Q1個人目標の達成状況</div></div>
     </div>
 
-    <!-- KPI 1 -->
-    <div class="card kpi-card">
-      <div class="kpi-header">
-        <span class="kpi-icon">🚀</span>
-        <span class="kpi-title">パートナー顧客を新たなフローでオンボできる</span>
-        <span class="kpi-badge badge-achieved">達成</span>
-      </div>
-      <div class="kpi-review">
-        新規4社が進行中。導入初期MTGは<strong>3週に1回</strong>の頻度で実施。1回目で計画シフト作成、2回目で実績入力・記録確認を説明するフローが確立された。この初期プロセスを乗り越えられないと解約リスクが高まる傾向も確認。
-      </div>
-      <div class="progress"><div class="progress-fill" style="width:100%;background:var(--green);"></div></div>
-
-      <div class="kpi-branches">
-        <div class="kpi-branch" style="border-left-color:var(--blue);background:var(--blue-light);">
-          <div class="branch-connector">└→</div>
-          <div class="branch-content">
-            <div class="branch-title">顧客進捗ダッシュボード構想</div>
-            <div class="branch-desc">顧客ごとの利用状況が担当者以外に分からない。まずExcelで進捗一覧を作り、運用→データ項目整理→エンジニアにデータ抽出→最終的にシステム化。</div>
-          </div>
-        </div>
-        <div class="kpi-branch" style="border-left-color:var(--yellow);background:var(--yellow-light);">
-          <div class="branch-connector">└→</div>
-          <div class="branch-content">
-            <div class="branch-title">帳票未利用の事業所が多い</div>
-            <div class="branch-desc">計画シフトは入力されているが実績記録が抜けているケースが多い。福島・イーフレンズ・ベストスタッフ等で帳票機能の利用が進まず、原因特定とフォローが必要。</div>
-          </div>
+    <div class="kpi-row">
+      <div class="card kpi-mini">
+        <span class="kpi-mini-icon">🚀</span>
+        <div>
+          <div class="kpi-mini-title">パートナー顧客の新フローオンボ <span class="kpi-badge bg-green">達成</span></div>
+          <div class="kpi-mini-note">新規4社進行中。3週に1回MTGのフローが確立。初期プロセスを乗り越えられないと解約リスクが高い傾向も確認。</div>
         </div>
       </div>
-
-      <div class="kpi-actions">
-        <div class="kpi-actions-title">ここから生まれたアクション</div>
-        <div class="action-item">顧客進捗一覧表（Excel）をCSチームで作成</div>
-        <div class="action-item">ダッシュボード化に必要なデータ項目を整理</div>
-        <div class="action-item">帳票未利用の事業所の原因を個別に確認</div>
-      </div>
-    </div>
-
-    <!-- KPI 2 -->
-    <div class="card kpi-card">
-      <div class="kpi-header">
-        <span class="kpi-icon">⚙️</span>
-        <span class="kpi-title">毎月の研修運営業務を自動化できる</span>
-        <span class="kpi-badge badge-achieved">達成</span>
-      </div>
-      <div class="kpi-review">
-        研修コンテンツは整備済み。CFPがあれば一括出力できる見込みで、自動化はほぼ問題なし。看護関連の研修はキャンメンさんと擦り合わせ中で、金坂さんが再度関係者と話す予定。
-      </div>
-      <div class="progress"><div class="progress-fill" style="width:100%;background:var(--green);"></div></div>
-
-      <div class="kpi-branches">
-        <div class="kpi-branch" style="border-left-color:var(--purple);background:var(--purple-light);">
-          <div class="branch-connector">└→</div>
-          <div class="branch-content">
-            <div class="branch-title">受講管理表 + 入退職管理の機能追加</div>
-            <div class="branch-desc">受講管理表の出力は未完。入退職管理は最新従業員データとの差分チェックで対応可能と見込み。スプレッドシート連携で実装可能性を確認。</div>
-          </div>
-        </div>
-        <div class="kpi-branch" style="border-left-color:var(--green);background:var(--green-light);">
-          <div class="branch-connector">└→</div>
-          <div class="branch-content">
-            <div class="branch-title">法定研修の必須化</div>
-            <div class="branch-desc">法定研修を必須化し全員受講を徹底する方針。個別対応の研修は順番調整が必要だが、必須研修で抜け漏れを防止。</div>
-          </div>
-        </div>
-        <div class="kpi-branch" style="border-left-color:var(--cyan);background:var(--cyan-light);">
-          <div class="branch-connector">└→</div>
-          <div class="branch-content">
-            <div class="branch-title">Google Docs編集の自動化PoC</div>
-            <div class="branch-desc">ターミナルからGoogle Docs編集が可能に。完全自動化は困難でも、既存ドキュメントの編集自動化は3ヶ月で実現可能。マイケルさんと段階的自動化を計画。</div>
-          </div>
+      <div class="card kpi-mini">
+        <span class="kpi-mini-icon">⚙️</span>
+        <div>
+          <div class="kpi-mini-title">研修運営業務の自動化 <span class="kpi-badge bg-green">達成</span></div>
+          <div class="kpi-mini-note">CFPがあれば一括出力可能に。看護研修はキャンメンさんと調整中。受講管理表は未完→Q2で機能追加。</div>
         </div>
       </div>
-
-      <div class="kpi-actions">
-        <div class="kpi-actions-title">ここから生まれたアクション</div>
-        <div class="action-item">受講管理表の出力機能を実装・テスト完了</div>
-        <div class="action-item">入退職管理の差分チェックロジックを構築</div>
-        <div class="action-item">法定研修の必須化ルール・スケジュールを確定</div>
-        <div class="action-item">Google Docs自動化PoCを開始（3ヶ月計画）</div>
-      </div>
-    </div>
-
-    <!-- KPI 3 -->
-    <div class="card kpi-card">
-      <div class="kpi-header">
-        <span class="kpi-icon">🏥</span>
-        <span class="kpi-title">看護：加減算・マトリクス表を完成</span>
-        <span class="kpi-badge badge-partial">一部達成</span>
-      </div>
-      <div class="kpi-review">
-        キャンビル連携の課題整理中。回答可能な部分を整理し、レミさんに相談する部分をまとめる段階。看護領域は体系化が不十分で、看護以外の要素も含まれている可能性あり。
-      </div>
-      <div class="progress"><div class="progress-fill" style="width:55%;background:var(--yellow);"></div></div>
-
-      <div class="kpi-branches">
-        <div class="kpi-branch" style="border-left-color:var(--yellow);background:var(--yellow-light);">
-          <div class="branch-connector">└→</div>
-          <div class="branch-content">
-            <div class="branch-title">キャンビル連携の課題整理</div>
-            <div class="branch-desc">キャンビルからの質問に対し、回答可能な部分を整理。レミさんに相談する部分を切り分けてまとめる必要あり。</div>
-          </div>
-        </div>
-        <div class="kpi-branch" style="border-left-color:var(--red);background:var(--red-light);">
-          <div class="branch-connector">└→</div>
-          <div class="branch-content">
-            <div class="branch-title">ニコッツの前回失敗 → 看護プロセス再設計</div>
-            <div class="branch-desc">前回失敗を踏まえ、唐田さんが主体的に進める意向。入院後の退院プロセスに関する改善が必要。看護領域の研修・プロセスの体系化案を作成する方向。</div>
-          </div>
+      <div class="card kpi-mini">
+        <span class="kpi-mini-icon">🏥</span>
+        <div>
+          <div class="kpi-mini-title">看護：加減算・マトリクス表 <span class="kpi-badge bg-yellow">一部達成</span></div>
+          <div class="kpi-mini-note">キャンビル連携の課題整理中。レミさんへの相談部分を切り分け中。ニコッツの失敗を踏まえ看護プロセス再設計へ。</div>
         </div>
       </div>
-
-      <div class="kpi-actions">
-        <div class="kpi-actions-title">ここから生まれたアクション</div>
-        <div class="action-item">キャンビルの質問を整理し回答（レミさん相談分含む）</div>
-        <div class="action-item">看護領域の研修・プロセスの体系化案を作成</div>
-        <div class="action-item">前回失敗の振り返り資料を作成（唐田さんが改善案主導）</div>
-        <div class="action-item">キャンメン・金坂さんとの調整MTGを設定</div>
-      </div>
-    </div>
-
-    <!-- KPI 4 -->
-    <div class="card kpi-card">
-      <div class="kpi-header">
-        <span class="kpi-icon">🎓</span>
-        <span class="kpi-title">オンボ：顧客が一部自走できる</span>
-        <span class="kpi-badge badge-partial">一部達成</span>
-      </div>
-      <div class="kpi-review">
-        順調な顧客がいる一方（ファストホーム、タティヒエ、サクシード）、帳票未利用の事業所が複数。給与事前登録は金坂さんへの提案後2回で安定運用に到達し、トラブルなく運用できている。
-      </div>
-      <div class="progress"><div class="progress-fill" style="width:60%;background:var(--yellow);"></div></div>
-
-      <div class="kpi-branches">
-        <div class="kpi-branch" style="border-left-color:var(--cyan);background:var(--cyan-light);">
-          <div class="branch-connector">└→</div>
-          <div class="branch-content">
-            <div class="branch-title">CDI（AI指示報告）の精度向上とリリース計画</div>
-            <div class="branch-desc">エア密接度の精度向上が必須。精度だけでなく「いつリリースするか」で目標設定。CS側が実用レベルか判断し、エンジニアに積極的にフィードバックする。複数社ヒアリングと並行してプロンプト調整。</div>
-          </div>
+      <div class="card kpi-mini">
+        <span class="kpi-mini-icon">🎓</span>
+        <div>
+          <div class="kpi-mini-title">オンボ：顧客が一部自走 <span class="kpi-badge bg-yellow">一部達成</span></div>
+          <div class="kpi-mini-note">順調な顧客あり（ファストホーム・タティヒエ・サクシード）。一方で帳票未利用の事業所が複数。給与事前登録は安定運用に到達。</div>
         </div>
-        <div class="kpi-branch" style="border-left-color:var(--green);background:var(--green-light);">
-          <div class="branch-connector">└→</div>
-          <div class="branch-content">
-            <div class="branch-title">給与事前登録が安定 → さらなる展開</div>
-            <div class="branch-desc">2回で運用安定。トラブルなし。実装を進めれば給与関連もある程度対応可能な手応えあり。</div>
-          </div>
-        </div>
-        <div class="kpi-branch" style="border-left-color:var(--purple);background:var(--purple-light);">
-          <div class="branch-connector">└→</div>
-          <div class="branch-content">
-            <div class="branch-title">補助金申請代行のAI活用</div>
-            <div class="branch-desc">過去の指摘事例をチェックリスト化。将来的にはAIエージェント開発を目指す。まず過去の書類や公式案内文をAIに学習させ標準化を実験。自治体ごとの要件差異や物理的作業が多く完全自動化は困難だが、段階的に進める。</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="kpi-actions">
-        <div class="kpi-actions-title">ここから生まれたアクション</div>
-        <div class="action-item">CDI精度向上（複数社ヒアリング＋プロンプト調整）</div>
-        <div class="action-item">補助金申請の過去指摘事例を棚卸し→チェックリスト化</div>
-        <div class="action-item">AI学習（申請業務の標準化）の実験を開始</div>
       </div>
     </div>
   </div>
 
-  <!-- ========================================== -->
-  <!-- PART 2: オンボーディング支援                  -->
-  <!-- ========================================== -->
-  <div class="section" id="onbo">
-    <div class="section-header">
-      <div class="section-num" style="background:var(--blue-light);color:var(--blue);">02</div>
-      <div>
-        <div class="section-title">オンボーディング支援の現状</div>
-        <div class="section-subtitle">新規顧客の導入プロセスと各事業所の状況</div>
-      </div>
+  <!-- ================================ -->
+  <!-- オンボーディング（重点）            -->
+  <!-- ================================ -->
+  <div class="sec" id="onbo">
+    <div class="sec-head">
+      <div class="sec-num" style="background:rgba(37,99,235,0.07);color:var(--blue);">02</div>
+      <div><div class="sec-title">オンボーディング支援</div><div class="sec-sub">導入プロセスの現状と顧客ごとの課題</div></div>
     </div>
 
-    <!-- Onbo Flow -->
-    <div class="card" style="margin-bottom:20px;">
-      <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:14px;">導入初期プロセス（3週に1回MTG）</h3>
-      <div class="onbo-flow">
-        <div class="onbo-step" style="border-color:var(--colibri);border-width:2px;">
-          <div class="onbo-step-num">MTG 1</div>
-          <div class="onbo-step-name">計画シフト作成</div>
-          <div class="onbo-step-detail">ケアプランに基づく<br>定期スケジュール</div>
-        </div>
-        <div class="onbo-arrow">→</div>
-        <div class="onbo-step" style="border-color:var(--blue);border-width:2px;">
-          <div class="onbo-step-num">MTG 2</div>
-          <div class="onbo-step-name">実績入力・記録</div>
-          <div class="onbo-step-detail">実績シフト管理<br>記録確認方法</div>
-        </div>
-        <div class="onbo-arrow">→</div>
-        <div class="onbo-step" style="border-color:var(--green);border-width:2px;">
-          <div class="onbo-step-num">定着</div>
-          <div class="onbo-step-name">自走・帳票利用</div>
-          <div class="onbo-step-detail">帳票・請求連携<br>給与計算</div>
-        </div>
-      </div>
-      <div style="text-align:center;font-size:0.78rem;color:var(--red);font-weight:500;margin-top:8px;">
-        この初期プロセスを乗り越えられないと解約リスクが高まる傾向
-      </div>
-    </div>
-
-    <!-- Customer Table -->
+    <!-- Flow -->
     <div class="card">
-      <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:14px;">顧客ステータス一覧</h3>
+      <h3>導入初期プロセス</h3>
+      <div class="flow">
+        <div class="flow-step" style="border-color:var(--colibri);">
+          <div class="flow-step-num">MTG 1回目</div>
+          <div class="flow-step-name">計画シフト作成</div>
+          <div class="flow-step-desc">ケアプランに基づく定期スケジュールを登録。繰り返し設定で毎週の訪問を一括作成。</div>
+        </div>
+        <div class="flow-arr">→</div>
+        <div class="flow-step" style="border-color:var(--blue);">
+          <div class="flow-step-num">MTG 2回目</div>
+          <div class="flow-step-name">実績入力・記録</div>
+          <div class="flow-step-desc">計→実の反映操作、日々の変更方法、ヘルパーのアプリ記録、サ責の確認方法を説明。</div>
+        </div>
+        <div class="flow-arr">→</div>
+        <div class="flow-step" style="border-color:var(--green);">
+          <div class="flow-step-num">定着フェーズ</div>
+          <div class="flow-step-name">自走・帳票・請求</div>
+          <div class="flow-step-desc">帳票機能の利用、請求ソフト連携、給与計算への展開。ここまで到達すれば定着。</div>
+        </div>
+      </div>
+      <div class="callout" style="background:rgba(220,38,38,0.06);">
+        <span class="callout-icon">⚠️</span>
+        <div>
+          <strong style="color:var(--red);">解約リスクのポイント</strong><br>
+          <span style="font-size:0.78rem;color:var(--dim);">MTG1→2の初期プロセスを乗り越えられない事業所は解約リスクが高い。計画シフトは入力されても実績記録が抜けるケースが多い。導入頻度は3週に1回で、現在4社が並行進行中。</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Customer Status -->
+    <div class="card">
+      <h3>顧客ステータス一覧</h3>
       <div style="overflow-x:auto;">
-        <table class="customer-table">
-          <thead>
-            <tr><th>事業所</th><th>ステータス</th><th>備考</th></tr>
-          </thead>
+        <table class="tbl">
+          <thead><tr><th>事業所</th><th>ステータス</th><th>備考</th><th>次のアクション</th></tr></thead>
           <tbody>
-            <tr><td><strong>ファストホーム</strong></td><td><span class="c-dot g"></span>順調</td><td>段階的に利用拡大中</td></tr>
-            <tr><td><strong>タティヒエ</strong></td><td><span class="c-dot g"></span>順調</td><td>5月完全切替予定</td></tr>
-            <tr><td><strong>サクシード</strong></td><td><span class="c-dot g"></span>順調</td><td>5月API連携予定</td></tr>
-            <tr><td><strong>福島事業所</strong></td><td><span class="c-dot r"></span>要対応</td><td>実績1/3、林氏との連絡困難、口座振替未提出、料金未払い</td></tr>
-            <tr><td><strong>イーフレンズ</strong></td><td><span class="c-dot y"></span>要確認</td><td>担当者多忙で社内教育が進まず、帳票未利用</td></tr>
-            <tr><td><strong>ベストスタッフ</strong></td><td><span class="c-dot y"></span>要確認</td><td>帳票未利用。原因不明</td></tr>
-            <tr><td><strong>あゆみの作品</strong></td><td><span class="c-dot y"></span>要確認</td><td>帳票未利用</td></tr>
-            <tr><td><strong>マル</strong></td><td><span class="c-dot y"></span>要確認</td><td>帳票未利用。移動支援が多いことが推測理由</td></tr>
+            <tr><td><strong>ファストホーム</strong></td><td><span class="dot" style="background:var(--green);"></span>順調</td><td>段階的に利用拡大中</td><td>継続フォロー</td></tr>
+            <tr><td><strong>タティヒエ</strong></td><td><span class="dot" style="background:var(--green);"></span>順調</td><td>5月完全切替予定</td><td>切替サポート準備</td></tr>
+            <tr><td><strong>サクシード</strong></td><td><span class="dot" style="background:var(--green);"></span>順調</td><td>5月API連携予定</td><td>API連携検証</td></tr>
+            <tr><td><strong>福島事業所</strong></td><td><span class="dot" style="background:var(--red);"></span>要対応</td><td>記録実施1/3、林氏と連絡困難、料金未払い</td><td>電話で口座振替依頼書を促す</td></tr>
+            <tr><td><strong>イーフレンズ</strong></td><td><span class="dot" style="background:var(--yellow);"></span>要確認</td><td>担当者多忙で社内教育が進まず</td><td>次回MTGで教育状況を確認</td></tr>
+            <tr><td><strong>ベストスタッフ</strong></td><td><span class="dot" style="background:var(--yellow);"></span>要確認</td><td>帳票未利用。原因不明</td><td>原因ヒアリング</td></tr>
+            <tr><td><strong>あゆみの作品</strong></td><td><span class="dot" style="background:var(--yellow);"></span>要確認</td><td>帳票未利用</td><td>原因ヒアリング</td></tr>
+            <tr><td><strong>マル</strong></td><td><span class="dot" style="background:var(--yellow);"></span>要確認</td><td>移動支援が多く帳票活用の余地が少ない可能性</td><td>サービス種別を確認</td></tr>
           </tbody>
         </table>
       </div>
     </div>
+
+    <!-- Challenges -->
+    <div class="card">
+      <h3>オンボで見えた課題</h3>
+      <div class="challenge-grid">
+        <div class="challenge-card" style="border-left-color:var(--red);">
+          <h4>帳票利用が進まない</h4>
+          <p>計画シフトは入力されるが、実績記録が抜けるケースが多い。帳票機能まで到達できていない事業所が複数存在。原因が特定できていないケースもある。</p>
+        </div>
+        <div class="challenge-card" style="border-left-color:var(--yellow);">
+          <h4>顧客の進捗が見えない</h4>
+          <p>顧客ごとの利用状況が担当者の頭の中にしかない。CSミーティングで毎回確認するのが非効率。進捗ダッシュボードの構築が急務。</p>
+        </div>
+        <div class="challenge-card" style="border-left-color:var(--blue);">
+          <h4>担当者との接点確保</h4>
+          <p>福島事業所（林氏）やイーフレンズなど、担当者が多忙で連絡が取りづらいケース。社内教育が進まず帳票利用が停滞する悪循環。</p>
+        </div>
+        <div class="challenge-card" style="border-left-color:var(--purple);">
+          <h4>サービスタイプの設定問題</h4>
+          <p>過去に手動設定した色が残る問題、新規法人で地域単価が未設定のケースが多発。法人設定時の自動紐付けの仕組みが提案された。</p>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- ========================================== -->
-  <!-- PART 3: これからのビジョン                    -->
-  <!-- ========================================== -->
-  <div class="section" id="vision">
-    <div class="section-header">
-      <div class="section-num" style="background:var(--purple-light);color:var(--purple);">03</div>
-      <div>
-        <div class="section-title">これからのビジョン</div>
-        <div class="section-subtitle">CS戦略・AI活用・今後の方向性</div>
-      </div>
+  <!-- ================================ -->
+  <!-- これからのビジョン（重点）          -->
+  <!-- ================================ -->
+  <div class="sec" id="vision">
+    <div class="sec-head">
+      <div class="sec-num" style="background:rgba(124,58,237,0.07);color:var(--purple);">03</div>
+      <div><div class="sec-title">これからのビジョン</div><div class="sec-sub">CS戦略・AI活用・今後の構想</div></div>
     </div>
 
-    <!-- ファンパ Concept -->
-    <div class="concept-box" style="margin-bottom:20px;">
+    <!-- ファンパ -->
+    <div class="concept">
       <h3>新概念：「ファンパフォーマンス（ファンパ）」</h3>
-      <p>営業→開発まで全社的に、顧客を「ファン」にする視点を導入。一見非効率でも顧客満足度を高める行動を評価する、コスパ・タイパに続く第3の評価軸。</p>
-      <div class="concept-cols">
+      <p>コスパ・タイパに続く第3の評価軸。一見非効率でも顧客がファンになる行動を評価する。営業→開発まで全社横断で「ファンを創る」視点を導入。</p>
+      <div class="concept-row">
         <div class="concept-col">
-          <h4>コスパ</h4>
-          <p>コストに対する効果</p>
+          <h4>📐 コスパ</h4>
+          <p>コスト対効果</p>
         </div>
+        <div class="concept-arr">→</div>
         <div class="concept-col">
-          <h4>タイパ</h4>
-          <p>時間に対する効果</p>
+          <h4>⏱ タイパ</h4>
+          <p>時間対効果</p>
         </div>
-        <div class="concept-col highlight">
-          <h4 style="color:var(--colibri);">ファンパ <span style="font-size:0.65rem;background:var(--colibri-light);padding:1px 6px;border-radius:6px;">NEW</span></h4>
-          <p style="color:var(--text-dim);">丁寧なオンボ、範囲外の情報提供など</p>
+        <div class="concept-arr">→</div>
+        <div class="concept-col hl">
+          <h4 style="color:var(--colibri);">❤️ ファンパ</h4>
+          <p style="color:var(--dim);">丁寧なオンボ<br>範囲外の情報提供</p>
         </div>
       </div>
     </div>
 
-    <!-- Vision Cards -->
-    <div class="vision-grid">
-      <div class="card vision-card" style="border-top-color:var(--colibri);">
-        <h3>CS戦略と体制</h3>
-        <p>「ファン」を創出するために、まず現状を可視化する</p>
-        <ul class="vision-points">
-          <li>CSチームの業務内容と時間配分を可視化</li>
-          <li>ボトルネックを特定してから人員検討</li>
-          <li>増員するならアップセル等の新チャレンジ担当</li>
-          <li>単純な業務分散の増員には慎重</li>
-        </ul>
+    <!-- CS戦略 -->
+    <div class="card">
+      <h3>CS戦略：業務可視化 → 体制強化</h3>
+      <p style="font-size:0.8rem;color:var(--dim);margin-bottom:14px;">人員増強の前に、まず現状のボトルネックを特定する。増員するなら既存業務の分散ではなく、アップセル施策など新しいチャレンジを担う役割が理想。</p>
+      <div class="flow">
+        <div class="flow-step" style="border-color:var(--colibri);min-width:160px;">
+          <div class="flow-step-num">STEP 1</div>
+          <div class="flow-step-name">業務可視化</div>
+          <div class="flow-step-desc">各担当者が何にどれくらい時間を使っているか整理</div>
+        </div>
+        <div class="flow-arr">→</div>
+        <div class="flow-step" style="border-color:var(--blue);min-width:160px;">
+          <div class="flow-step-num">STEP 2</div>
+          <div class="flow-step-name">ボトルネック特定</div>
+          <div class="flow-step-desc">ファンパ向上に必要な時間を阻む要因を発見</div>
+        </div>
+        <div class="flow-arr">→</div>
+        <div class="flow-step" style="border-color:var(--green);min-width:160px;">
+          <div class="flow-step-num">STEP 3</div>
+          <div class="flow-step-name">体制検討</div>
+          <div class="flow-step-desc">増員or業務改善。新チャレンジ担当として増員が理想</div>
+        </div>
       </div>
+    </div>
 
+    <!-- 顧客進捗ダッシュボード -->
+    <div class="card">
+      <h3>顧客進捗ダッシュボード構想</h3>
+      <p style="font-size:0.8rem;color:var(--dim);margin-bottom:14px;">担当者の頭の中にある顧客情報をチーム全体で共有できる仕組みを、段階的に構築する。</p>
+      <div class="flow">
+        <div class="flow-step" style="border-color:var(--yellow);min-width:150px;">
+          <div class="flow-step-num">Phase 1</div>
+          <div class="flow-step-name">Excel手作業</div>
+          <div class="flow-step-desc">CSチーム内で顧客進捗一覧を作成・運用開始</div>
+        </div>
+        <div class="flow-arr">→</div>
+        <div class="flow-step" style="border-color:var(--blue);min-width:150px;">
+          <div class="flow-step-num">Phase 2</div>
+          <div class="flow-step-name">データ項目整理</div>
+          <div class="flow-step-desc">運用を通じて必要なデータ項目を整理・仕様化</div>
+        </div>
+        <div class="flow-arr">→</div>
+        <div class="flow-step" style="border-color:var(--purple);min-width:150px;">
+          <div class="flow-step-num">Phase 3</div>
+          <div class="flow-step-name">システム化</div>
+          <div class="flow-step-desc">エンジニアにデータ抽出依頼→adminダッシュボード化</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI活用 -->
+    <div class="vision-grid">
       <div class="card vision-card" style="border-top-color:var(--cyan);">
-        <h3>AI活用の3本柱</h3>
-        <p>CDI・補助金AI・ドキュメント自動化で生産性を上げる</p>
-        <ul class="vision-points">
-          <li>CDI：精度向上＋リリース日を軸に目標設定</li>
-          <li>補助金：チェックリスト化→AIエージェント開発</li>
-          <li>ドキュメント：Google Docs編集自動化3ヶ月PoC</li>
+        <h3>🤖 CDI（AI指示報告）</h3>
+        <p>ベータ版の精度向上だけでなく「いつリリースするか」を軸に目標設定。エア密接度の精度向上が最重要課題。</p>
+        <ul class="vp">
+          <li>CS側が実用レベルか判断→エンジニアにフィードバック</li>
+          <li>複数社へのヒアリングと並行してプロンプト調整</li>
           <li>コア機能が固まれば外部統合で全体最適へ</li>
         </ul>
       </div>
-
-      <div class="card vision-card" style="border-top-color:var(--blue);">
-        <h3>顧客進捗の可視化</h3>
-        <p>担当者の頭の中にある情報をチームで共有する</p>
-        <ul class="vision-points">
-          <li>まずExcelで手作業の進捗一覧を作成</li>
-          <li>CSミーティングで運用しデータ項目を整理</li>
-          <li>エンジニアに定期データ抽出を依頼</li>
-          <li>最終的にadminダッシュボードへシステム化</li>
+      <div class="card vision-card" style="border-top-color:var(--purple);">
+        <h3>📄 補助金申請のAI活用</h3>
+        <p>補助金・加算申請代行の自動化を段階的に。完全自動化は困難だが、担当者を支援するAIエージェントを目指す。</p>
+        <ul class="vp">
+          <li>過去の指摘事例をチェックリスト化</li>
+          <li>過去の書類・公式案内文をAIに学習させ標準化を実験</li>
+          <li>自治体ごとの要件差異・物理的作業は人間が担当</li>
         </ul>
+      </div>
+      <div class="card vision-card" style="border-top-color:var(--blue);">
+        <h3>📝 ドキュメント自動化</h3>
+        <p>ターミナルからGoogle Docs編集が可能に。3ヶ月で既存ドキュメントの編集自動化PoCを完了させる。</p>
+        <ul class="vp">
+          <li>完全自動化は困難→まず既存ドキュメント編集から</li>
+          <li>マイケルさんとの議論を踏まえ段階的に計画</li>
+          <li>研修資料のアップデート効率化に直結</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 研修 -->
+    <div class="card" style="margin-top:16px;">
+      <h3>研修の制度化と機能追加</h3>
+      <div class="challenge-grid">
+        <div class="challenge-card" style="border-left-color:var(--green);">
+          <h4>法定研修の必須化</h4>
+          <p>全員受講を徹底する方針。個別対応の研修は順番調整が必要だが、まず必須研修で抜け漏れを防止する。</p>
+        </div>
+        <div class="challenge-card" style="border-left-color:var(--blue);">
+          <h4>受講管理表の出力</h4>
+          <p>受講管理表の自動出力は未完。入退職管理と組み合わせ、差分チェックロジックをスプレッドシート連携で構築する。</p>
+        </div>
       </div>
     </div>
 
     <!-- Roadmap -->
-    <div class="card" style="margin-top:20px;">
-      <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:16px;">Q2ロードマップ</h3>
+    <div class="card" style="margin-top:16px;">
+      <h3>Q2ロードマップ</h3>
       <div class="roadmap">
-        <div class="roadmap-item">
-          <div class="roadmap-dot" style="color:var(--colibri);background:var(--colibri);"></div>
-          <div class="roadmap-label" style="color:var(--colibri);">4月 — 土台づくり</div>
-          <div class="roadmap-desc">CDIヒアリング開始 / 受講管理表実装 / Excel進捗一覧作成 / 福島事業所の緊急対応 / CS業務の可視化</div>
+        <div class="rm-item">
+          <div class="rm-dot" style="color:var(--colibri);background:var(--colibri);"></div>
+          <div class="rm-label" style="color:var(--colibri);">4月 — 土台づくり</div>
+          <div class="rm-desc">CDIヒアリング開始 / 受講管理表実装 / Excel進捗一覧作成 / 福島事業所の緊急対応 / CS業務の可視化 / 補助金チェックリスト棚卸し</div>
         </div>
-        <div class="roadmap-item">
-          <div class="roadmap-dot" style="color:var(--blue);background:var(--blue);"></div>
-          <div class="roadmap-label" style="color:var(--blue);">5月 — 本格稼働</div>
-          <div class="roadmap-desc">CDIリリース判断 / 法定研修の必須化運用開始 / タティヒエ完全切替 / サクシードAPI連携 / ダッシュボードデータ項目整理</div>
+        <div class="rm-item">
+          <div class="rm-dot" style="color:var(--blue);background:var(--blue);"></div>
+          <div class="rm-label" style="color:var(--blue);">5月 — 本格稼働</div>
+          <div class="rm-desc">CDIリリース判断→複数社導入 / 法定研修の必須化運用開始 / タティヒエ完全切替 / サクシードAPI連携 / ダッシュボードデータ項目をエンジニアに依頼</div>
         </div>
-        <div class="roadmap-item">
-          <div class="roadmap-dot" style="color:var(--purple);background:var(--purple);"></div>
-          <div class="roadmap-label" style="color:var(--purple);">6月 — 仕上げ</div>
-          <div class="roadmap-desc">CDI運用レビュー / 看護加算仕様完了 / Google Docs自動化PoC完了 / ファンパKPI中間レビュー / Q2振り返り準備</div>
+        <div class="rm-item">
+          <div class="rm-dot" style="color:var(--purple);background:var(--purple);"></div>
+          <div class="rm-label" style="color:var(--purple);">6月 — 仕上げ・振り返り</div>
+          <div class="rm-desc">CDI運用レビュー / 看護加算仕様完了 / Google Docs自動化PoC完了 / ファンパKPI中間レビュー / Q2振り返り＋Q3目標設定準備</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ========================================== -->
-  <!-- NEXT STEPS                                 -->
-  <!-- ========================================== -->
-  <div class="section" id="next">
-    <div class="section-header">
-      <div class="section-num" style="background:var(--green-light);color:var(--green);">NS</div>
-      <div>
-        <div class="section-title">Next Steps</div>
-        <div class="section-subtitle">両会議から出たアクションアイテム</div>
-      </div>
+  <!-- ================================ -->
+  <!-- Next Steps                       -->
+  <!-- ================================ -->
+  <div class="sec" id="next">
+    <div class="sec-head">
+      <div class="sec-num" style="background:rgba(22,163,74,0.07);color:var(--green);">NS</div>
+      <div><div class="sec-title">Next Steps</div><div class="sec-sub">両会議から出たアクションアイテム</div></div>
     </div>
 
-    <div class="action-grid">
-      <div class="card action-category">
+    <div class="act-grid">
+      <div class="card act-cat">
         <h4>🤖 AI・開発</h4>
-        <ul class="action-list">
+        <ul class="act-list">
           <li>CDI精度向上（ヒアリング＋プロンプト調整）</li>
           <li>受講管理表の出力機能を実装</li>
           <li>入退職管理の差分チェックロジック構築</li>
-          <li>補助金の過去指摘事例を棚卸し→チェックリスト化</li>
-          <li>AI学習（申請業務の標準化）の実験を開始</li>
+          <li>補助金の過去指摘事例→チェックリスト化</li>
+          <li>AI学習（申請業務の標準化）の実験開始</li>
           <li>Google Docs自動化PoCを開始</li>
           <li>新規法人の地域単価を自動設定する仕組みを検討</li>
         </ul>
       </div>
-      <div class="card action-category">
+      <div class="card act-cat">
         <h4>👥 CS・体制</h4>
-        <ul class="action-list">
+        <ul class="act-list">
           <li>CSチームの業務時間配分を整理・可視化</li>
           <li>顧客進捗一覧（Excel）を作成</li>
           <li>ダッシュボードに必要なデータ項目を整理</li>
@@ -677,20 +475,20 @@
           <li>法定研修の必須化ルール・スケジュール確定</li>
         </ul>
       </div>
-      <div class="card action-category">
-        <h4>🏥 看護・個別対応</h4>
-        <ul class="action-list">
+      <div class="card act-cat">
+        <h4>🏥 看護・研修</h4>
+        <ul class="act-list">
           <li>キャンビルの質問を整理し回答</li>
           <li>キャンメン・金坂さんとの調整MTG設定</li>
           <li>ニコッツの振り返り資料を作成</li>
           <li>看護領域の研修・プロセス体系化案を作成</li>
         </ul>
       </div>
-      <div class="card action-category">
+      <div class="card act-cat">
         <h4>🔥 顧客・緊急</h4>
-        <ul class="action-list">
-          <li>福島：林氏に電話（口座振替依頼書の記入・郵送）</li>
-          <li>福島：記録の書き残しゼロ化を働きかけ</li>
+        <ul class="act-list">
+          <li>福島：林氏に電話（口座振替依頼書）</li>
+          <li>福島：記録の書き残しゼロ化</li>
           <li>福島：請求連携（まもる君）の検証</li>
           <li>イーフレンズ：社内教育状況を次回MTGで確認</li>
         </ul>
@@ -699,10 +497,10 @@
   </div>
 
   <div class="footer">
-    <p>Q1 2026 Quarter Review — Colibri CS</p>
-    <p style="margin-top:4px;">2026年4月1日 ｜ キンジさんとのクォーター面談 + 週間チーム会議に基づく</p>
+    Q1 2026 Quarter Review — Colibri CS<br>
+    2026年4月1日 ｜ キンジさんとのクォーター面談 + 週間チーム会議
   </div>
+</div>
 
-</div><!-- /container -->
 </body>
 </html>
