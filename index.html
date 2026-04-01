@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colibri Goals Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="dashboard" id="app">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-brand">
+        <img src="images/logo.png" alt="Colibri" class="header-logo">
+        <span class="header-subtitle">Goals Dashboard</span>
+      </div>
+      <nav class="quarter-tabs" id="quarter-tabs"></nav>
+    </header>
+
+    <!-- Q Goals -->
+    <section class="card section-gap" id="q-goals">
+      <div class="card-title">クォーター目標</div>
+      <div id="q-goals-content"></div>
+    </section>
+
+    <!-- Monthly Goals -->
+    <section class="card section-gap" id="month-goals">
+      <div class="card-title" id="month-goals-title">月間目標</div>
+      <div id="month-goals-content"></div>
+    </section>
+
+    <!-- Review -->
+    <section class="card section-gap" id="review">
+      <div class="card-title">振り返り</div>
+      <div id="review-content"></div>
+    </section>
+
+  </div>
+
+  <script src="data/goals-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

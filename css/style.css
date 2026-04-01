@@ -1,0 +1,249 @@
+/* ===== Colibri Goals Dashboard — Light Theme ===== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --card-hover: #f1f3f5;
+  --border: rgba(0,0,0,0.08);
+  --border-light: rgba(0,0,0,0.12);
+  --text: #1a1a2e;
+  --text-dim: #475569;
+  --text-muted: #94a3b8;
+  --colibri: #e85d5d;
+  --colibri-dim: rgba(232,93,93,0.1);
+  --green: #16a34a;
+  --yellow: #d97706;
+  --red: #dc2626;
+  --blue: #2563eb;
+  --accent: #e85d5d;
+}
+
+html { font-size: 15px; scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* --- Layout --- */
+.dashboard {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 20px 80px;
+}
+
+.section-gap { margin-top: 24px; }
+
+/* --- Header --- */
+.header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.header-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.header-logo {
+  height: 36px;
+}
+.header-subtitle {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* --- Quarter Tabs --- */
+.quarter-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.quarter-tab {
+  background: rgba(0,0,0,0.03);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 4px 14px;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.quarter-tab:hover {
+  background: rgba(0,0,0,0.06);
+  color: var(--text);
+}
+.quarter-tab.active {
+  background: var(--colibri-dim);
+  border-color: var(--colibri);
+  color: var(--colibri);
+  font-weight: 600;
+}
+
+/* --- Cards --- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.card-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+
+/* --- Belief Banner --- */
+.belief-banner {
+  background: linear-gradient(135deg, rgba(232,93,93,0.06), rgba(232,93,93,0.02));
+  border: 1px solid rgba(232,93,93,0.2);
+  border-radius: 14px;
+  padding: 24px;
+  margin-top: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.belief-section {
+  margin-bottom: 16px;
+}
+.belief-section:last-child {
+  margin-bottom: 0;
+}
+.belief-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--colibri);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+.belief-text {
+  font-size: 0.92rem;
+  color: var(--text);
+  font-weight: 500;
+}
+.belief-sub {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-top: 4px;
+  line-height: 1.6;
+}
+
+/* --- Q Goals --- */
+.q-category { margin-bottom: 20px; }
+.q-category:last-child { margin-bottom: 0; }
+.q-cat-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--colibri);
+  margin-bottom: 8px;
+}
+.q-goal {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 0;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+.q-goal-icon { flex-shrink: 0; font-size: 0.75rem; margin-top: 2px; }
+.q-goal.done { opacity: 0.5; }
+.q-goal.done .q-goal-text { text-decoration: line-through; }
+.q-goal-result {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-left: 4px;
+}
+.q-goal-result.achieved { color: var(--green); }
+.q-goal-result.partial { color: var(--yellow); }
+.q-goal-result.missed { color: var(--red); }
+
+/* --- Month Goals --- */
+.month-cat { margin-bottom: 16px; }
+.month-cat:last-child { margin-bottom: 0; }
+.month-cat-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--colibri);
+  margin-bottom: 8px;
+}
+.month-goal-item {
+  font-size: 0.85rem;
+  color: var(--text);
+  padding: 4px 0 4px 16px;
+  position: relative;
+}
+.month-goal-item::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+}
+.month-tabs {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* --- Review --- */
+.review-text {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+  white-space: pre-wrap;
+}
+.review-section {
+  margin-bottom: 16px;
+  padding: 14px;
+  background: rgba(0,0,0,0.02);
+  border-radius: 8px;
+  border-left: 3px solid var(--colibri);
+}
+.review-section-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--colibri);
+  margin-bottom: 6px;
+}
+.review-achievement {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+.review-achievement.high { background: rgba(74,222,128,0.15); color: var(--green); }
+.review-achievement.mid { background: rgba(251,191,36,0.15); color: var(--yellow); }
+.review-achievement.low { background: rgba(248,113,113,0.15); color: var(--red); }
+
+/* --- No Data --- */
+.no-data {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  padding: 24px 0;
+}
+
+/* --- Markdown-like --- */
+.md-text strong { color: var(--text); font-weight: 600; }
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 3px; }
