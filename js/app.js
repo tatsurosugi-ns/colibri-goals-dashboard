@@ -81,20 +81,6 @@ function renderQGoals(q) {
 
   html += '</div>';
 
-  // Plan URL link if available
-  if (q.planUrl) {
-    html += `<div style="margin-top:16px;">
-      <a href="${q.planUrl}" target="_blank" rel="noopener" style="
-        display:inline-flex;align-items:center;gap:6px;
-        background:linear-gradient(135deg,#1a1a2e,#0f3460);color:white;
-        text-decoration:none;padding:8px 20px;border-radius:10px;
-        font-size:0.8rem;font-weight:600;transition:opacity 0.2s;
-      " onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-        📄 クォーター計画の詳細を見る →
-      </a>
-    </div>`;
-  }
-
   // Monthly rates if available
   if (q.monthlyRates && q.monthlyRates.length) {
     html += '<div style="display:flex;gap:12px;margin-top:16px;">';

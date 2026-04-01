@@ -167,8 +167,7 @@ window.COLIBRI_DATA = {
           ]
         }
       ],
-      "review": null,
-      "planUrl": "https://tatsurosugi-ns.github.io/colibri-goals-dashboard/q2-2026-plan.html"
+      "review": null
     }
   ]
 };
