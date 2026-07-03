@@ -162,6 +162,15 @@ body {
   color: var(--text);
 }
 .q-goal-icon { flex-shrink: 0; font-size: 0.75rem; margin-top: 2px; }
+.q-goal-num {
+  flex-shrink: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  min-width: 1.2em;
+  margin-top: 2px;
+}
 .q-goal.done { opacity: 0.5; }
 .q-goal.done .q-goal-text { text-decoration: line-through; }
 .q-goal-result {

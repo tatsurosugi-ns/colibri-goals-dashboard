@@ -62,7 +62,7 @@ function renderQGoals(q) {
 
   html += '<div class="q-category">';
 
-  for (const g of q.goals) {
+  q.goals.forEach((g, i) => {
     const icon = getResultIcon(g.result);
     const resultCls = g.result || 'pending';
     const resultLabel = getResultLabel(g.result);
@@ -70,6 +70,7 @@ function renderQGoals(q) {
     const resultBadge = g.result ? `<span class="q-goal-result ${resultCls}">${resultLabel}</span>` : '';
 
     html += `<div class="q-goal">
+      <span class="q-goal-num">${i + 1}</span>
       <span class="q-goal-icon">${icon}</span>
       <span>
         <span class="q-goal-text">${g.text}</span>
@@ -77,7 +78,7 @@ function renderQGoals(q) {
         ${noteHtml ? '<br>' + noteHtml : ''}
       </span>
     </div>`;
-  }
+  });
 
   html += '</div>';
 
