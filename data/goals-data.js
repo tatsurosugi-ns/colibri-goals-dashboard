@@ -126,13 +126,14 @@ window.COLIBRI_DATA = {
       "period": "2026年4-6月",
       "label": "Q2 2026",
       "goals": [
-        { "text": "指示AI出力の精度向上", "result": null, "note": "" },
-        { "text": "研修管理：受講管理表＋入退職者管理の機能追加", "result": null, "note": "" },
-        { "text": "法定研修コンテンツのアップデート", "result": null, "note": "" },
-        { "text": "カラーズ看護オンボーディング成功＋看護オンボプロセスの改善", "result": null, "note": "" },
-        { "text": "看護加算：ココナース連携の仕様完了", "result": null, "note": "" },
-        { "text": "補助金申請代行業務のAI活用（実験レベル）", "result": null, "note": "" },
-        { "text": "オンボーディング管理ダッシュボードの作成", "result": null, "note": "" }
+        { "text": "指示AI出力の精度向上", "result": "partial", "note": "相談まで。検証に時間が必要" },
+        { "text": "研修管理：受講管理表＋入退職者管理の機能追加", "result": "achieved", "note": "回るようになった" },
+        { "text": "法定研修コンテンツのアップデート", "result": "missed", "note": "" },
+        { "text": "カラーズ看護オンボーディング成功＋看護オンボプロセスの改善", "result": "partial", "note": "提案中・返事待ち。記録フロー・マニュアルは大幅改善" },
+        { "text": "看護加算：ココナース連携の仕様完了", "result": "partial", "note": "MTG1回。その後の進捗不明→キンジさんに確認要" },
+        { "text": "補助金申請代行業務のAI活用（実験レベル）", "result": "missed", "note": "余裕なし" },
+        { "text": "オンボーディング管理ダッシュボードの作成", "result": "achieved", "note": "完了済み" },
+        { "text": "既存顧客30社にtelしてオンボの進捗を評価する", "result": "partial", "note": "12社実施" }
       ],
       "months": [
         {
@@ -145,6 +146,22 @@ window.COLIBRI_DATA = {
           ]
         }
       ],
+      "review": "研修管理システムが軌道に乗り、看護記録フロー・マニュアルも大幅改善できた。一方で既存顧客30社tel評価（12社止まり）、指示AI精度検証、法定研修アップデート、補助金AI活用は次クォーターへ持ち越し。看護加算のココナース連携はMTG後の進捗が不明なためキンジさんへ確認が必要。"
+    },
+    {
+      "id": "2026-Q3",
+      "period": "2026年7-9月",
+      "label": "Q3 2026",
+      "goals": [
+        { "text": "指示AI出力で「援助内容」を反映させる", "result": null, "note": "" },
+        { "text": "モニタリングAIで計画・実績の差分を出力できる", "result": null, "note": "" },
+        { "text": "研修：資料作成管理シートで運用できる", "result": null, "note": "" },
+        { "text": "研修：新コースを1つ開始できる（外部依頼）", "result": null, "note": "" },
+        { "text": "法定研修のアップデート", "result": null, "note": "" },
+        { "text": "看護：実装済みと未実装の加算登録仕様を整理できる", "result": null, "note": "" },
+        { "text": "アップセル営業を5件する", "result": null, "note": "" }
+      ],
+      "months": [],
       "review": null
     }
   ]
